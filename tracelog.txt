@@ -1,3 +1,4 @@
+
 07-26 17:56:19.739    5108-5108/com.jessicaxu.readjiffy.app W/dalvikvm﹕ Refusing to reopen boot DEX '/system/framework/hwframework.jar'
 07-26 17:56:19.779    5108-5108/com.jessicaxu.readjiffy.app I/Enter----->(MainActivity﹕ onCreate: Line 54)
 07-26 17:56:19.779    5108-5108/com.jessicaxu.readjiffy.app I/Enter----->(MainActivity﹕ setStrictMode: Line 233)
