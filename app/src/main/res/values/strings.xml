@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ReadJiffy</string>
+    <string name="title_section_reading">在读</string>
+    <string name="title_section_want">想读</string>
+    <string name="title_section_finished">已读</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="add_book">add_book</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_add_book">ReadJiffy</string>
+
+    <string-array name="stateSpinner">
+        <item>在读</item>
+        <item>想读</item>
+        <item>已读</item>
+    </string-array>
+
+
+</resources>

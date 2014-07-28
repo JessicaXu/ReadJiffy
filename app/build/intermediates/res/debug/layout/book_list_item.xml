@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.jessicaxu.readjiffy.app.ui.MainActivity">
+
+    <com.jessicaxu.readjiffy.app.ui.CustomTextView
+        android:id="@+id/bookNameText"
+        android:layout_alignParentTop="true"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content" />
+
+    <com.jessicaxu.readjiffy.app.ui.CustomTextView
+        android:id="@+id/percentText"
+        android:layout_below="@+id/bookNameText"
+        android:textSize="16dp"
+        android:paddingLeft="10dp"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"/>
+
+    <com.jessicaxu.readjiffy.app.ui.CustomTextView
+        android:id="@+id/authorText"
+        android:layout_below="@+id/percentText"
+        android:textSize="18dp"
+        android:paddingLeft="10dp"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/timerText"
+        android:layout_toLeftOf="@+id/del"
+        android:layout_centerVertical="true"
+        android:textColor="#2e52b4"
+        android:textSize="18dp"
+        android:text="00:00:00"
+        android:clickable="true"
+        android:layout_width="90dp"
+        android:layout_height="40dp" />
+
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_toLeftOf="@+id/del"
+        android:layout_above="@+id/timerText"
+        android:layout_alignParentTop="true"
+        android:textSize="16dp"
+        android:clickable="true"
+        android:layout_width="70dp"
+        android:layout_height="30dp" />
+
+    <TextView
+        android:id="@+id/totalTimerText"
+        android:layout_toLeftOf="@+id/del"
+        android:layout_below="@+id/timerText"
+        android:layout_alignParentBottom="true"
+        android:textSize="16dp"
+        android:clickable="true"
+        android:layout_width="70dp"
+        android:layout_height="30dp" />
+
+    <ImageView
+        android:id="@+id/editImg"
+        android:src="@drawable/ic_overflow"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="5dp"
+        android:layout_height="25dp" />
+
+    <ImageButton
+        android:id="@+id/del"
+        android:src="@drawable/del"
+        android:background="@android:color/transparent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:onClick="onDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout><!-- From: file:/opt/android/workspace/ReadJiffy/app/src/main/res/layout/book_list_item.xml -->

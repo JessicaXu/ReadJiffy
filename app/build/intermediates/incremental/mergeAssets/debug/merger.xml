@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="19.1.0" >
+        <source path="/opt/android/workspace/ReadJiffy/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/assets" />
+    </dataSet>
+    <dataSet config="main" >
+        <source path="/opt/android/workspace/ReadJiffy/app/src/main/assets" >
+            <file
+                name="tangshi.ttf"
+                path="/opt/android/workspace/ReadJiffy/app/src/main/assets/tangshi.ttf" />
+        </source>
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/opt/android/workspace/ReadJiffy/app/src/debug/assets" />
+    </dataSet>
+
+</merger>
