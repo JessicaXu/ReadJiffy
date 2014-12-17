@@ -1,0 +1,423 @@
+10-22 14:59:44.260    7916-7916/com.jessicaxu.ReadJiffy.app E/Trace﹕ error opening trace file: No such file or directory (2)
+10-22 14:59:44.320    7916-7916/com.jessicaxu.ReadJiffy.app W/dalvikvm﹕ Refusing to reopen boot DEX '/system/framework/hwframework.jar'
+10-22 14:59:44.360    7916-7916/com.jessicaxu.ReadJiffy.app I/ActivityThread﹕ Pub com.jessicaxu.ReadJiffy.app.content.bookcp: com.jessicaxu.ReadJiffy.app.content.BookCP
+10-22 14:59:44.370    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ onCreate
+10-22 14:59:44.370    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ addBookUri
+10-22 14:59:44.370    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ addBookUri
+10-22 14:59:44.480    7916-7916/com.jessicaxu.ReadJiffy.app W/System.err﹕ Invalid int: ""
+10-22 14:59:45.040    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ onCreate
+10-22 14:59:45.040    7916-7916/com.jessicaxu.ReadJiffy.app W/BookDbHelper﹕ CREATE TABLE if not exists Reading (_id integer PRIMARY KEY autoincrement,bookName,author,status,readPage,totalPage,minutes,hours,time_string,percent, UNIQUE (bookName));
+10-22 14:59:45.040    7916-7916/com.jessicaxu.ReadJiffy.app W/BookDbHelper﹕ CREATE TABLE if not exists Finished (_id integer PRIMARY KEY autoincrement,bookName,author,status,readPage,totalPage,minutes,hours,time_string,percent, UNIQUE (bookName));
+10-22 14:59:45.070    7916-7916/com.jessicaxu.ReadJiffy.app W/BookDbHelper﹕ CREATE TABLE if not exists Want (_id integer PRIMARY KEY autoincrement,bookName,author,status,readPage,totalPage,minutes,hours,time_string,percent, UNIQUE (bookName));
+10-22 14:59:45.070    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ onCreate
+10-22 14:59:45.430    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ onCreate
+10-22 14:59:45.500    7916-7920/com.jessicaxu.ReadJiffy.app E/dalvikvm﹕ GC_CONCURRENT freed 287K, 9% free 8238K/8967K, paused 12ms+2ms, total 28ms
+10-22 14:59:45.540    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 67, method: onCreate
+    当前使用内存2.7070313M
+10-22 14:59:45.600    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 303, method: setStrictMode
+    当前使用内存2.71875M
+10-22 14:59:45.660    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 316, method: setStrictMode
+    当前使用内存2.7226563M
+10-22 14:59:45.970    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 169, method: onNavigationDrawerItemSelected
+    当前使用内存3.0820313M
+10-22 14:59:46.040    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 178, method: onNavigationDrawerItemSelected
+    当前使用内存3.0859375M
+10-22 14:59:46.560    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 92, method: onCreate
+    当前使用内存3.1523438M
+10-22 14:59:46.660    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 97, method: onStart
+    当前使用内存3.1601563M
+10-22 14:59:47.410    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 211, method: onCreateOptionsMenu
+    当前使用内存3.2578125M
+10-22 14:59:47.520    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 221, method: onCreateOptionsMenu
+    当前使用内存3.28125M
+10-22 14:59:47.690    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 182, method: onSectionAttached
+    当前使用内存3.3632813M
+10-22 14:59:47.780    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 196, method: onSectionAttached
+    当前使用内存3.3710938M
+10-22 14:59:48.060    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 200, method: restoreActionBar
+    当前使用内存3.4375M
+10-22 14:59:48.120    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 205, method: restoreActionBar
+    当前使用内存3.4453125M
+10-22 14:59:48.210    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 100, method: onStart
+    当前使用内存3.4882813M
+10-22 14:59:48.280    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 105, method: onResume
+    当前使用内存3.4921875M
+10-22 14:59:48.330    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 108, method: onResume
+    当前使用内存3.5M
+10-22 14:59:48.380    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 146, method: onPostResume
+    当前使用内存3.5078125M
+10-22 14:59:48.440    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 148, method: onPostResume
+    当前使用内存3.5078125M
+10-22 14:59:53.520    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 169, method: onNavigationDrawerItemSelected
+    当前使用内存7.140625M
+10-22 14:59:53.650    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 178, method: onNavigationDrawerItemSelected
+    当前使用内存7.1484375M
+10-22 14:59:53.860    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 182, method: onSectionAttached
+    当前使用内存7.5585938M
+10-22 14:59:53.950    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 196, method: onSectionAttached
+    当前使用内存7.5664063M
+10-22 14:59:54.090    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 200, method: restoreActionBar
+    当前使用内存7.5976563M
+10-22 14:59:54.220    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 205, method: restoreActionBar
+    当前使用内存7.6054688M
+10-22 14:59:54.450    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 211, method: onCreateOptionsMenu
+    当前使用内存7.6523438M
+10-22 14:59:54.550    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 200, method: restoreActionBar
+    当前使用内存7.6640625M
+10-22 14:59:54.630    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 205, method: restoreActionBar
+    当前使用内存7.6757813M
+10-22 14:59:55.450    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 227, method: onOptionsItemSelected
+    当前使用内存7.7617188M
+10-22 14:59:55.600    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 244, method: addOneBook
+    当前使用内存7.7695313M
+10-22 14:59:55.690    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 266, method: createAddBookDialog
+    当前使用内存7.78125M
+10-22 14:59:55.950    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 296, method: createAddBookDialog
+    当前使用内存8.066406M
+10-22 14:59:56.050    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 262, method: addOneBook
+    当前使用内存8.074219M
+10-22 15:00:15.940    7916-8794/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 1008, method: doInBackground
+    当前使用内存9.332031M
+10-22 15:00:16.570    7916-8794/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 1047, method: doInBackground
+    当前使用内存9.3671875M
+10-22 15:00:17.000    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 1053, method: onPostExecute
+    当前使用内存9.71875M
+10-22 15:00:17.080    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 1058, method: onPostExecute
+    当前使用内存9.722656M
+10-22 15:00:18.810    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 227, method: onOptionsItemSelected
+    当前使用内存9.761719M
+10-22 15:00:18.890    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 239, method: onOptionsItemSelected
+    当前使用内存9.769531M
+10-22 15:00:19.430    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 211, method: onCreateOptionsMenu
+    当前使用内存9.9296875M
+10-22 15:00:19.500    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 221, method: onCreateOptionsMenu
+    当前使用内存9.941406M
+10-22 15:00:19.930    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 169, method: onNavigationDrawerItemSelected
+    当前使用内存9.972656M
+10-22 15:00:20.000    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 178, method: onNavigationDrawerItemSelected
+    当前使用内存9.980469M
+10-22 15:00:20.100    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 182, method: onSectionAttached
+    当前使用内存9.996094M
+10-22 15:00:20.170    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 196, method: onSectionAttached
+    当前使用内存10.003906M
+10-22 15:00:20.280    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 200, method: restoreActionBar
+    当前使用内存10.027344M
+10-22 15:00:20.360    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 205, method: restoreActionBar
+    当前使用内存10.035156M
+10-22 15:00:20.550    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 211, method: onCreateOptionsMenu
+    当前使用内存10.074219M
+10-22 15:00:20.620    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 200, method: restoreActionBar
+    当前使用内存10.0859375M
+10-22 15:00:20.700    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 205, method: restoreActionBar
+    当前使用内存10.097656M
+10-22 15:00:21.830    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 227, method: onOptionsItemSelected
+    当前使用内存10.136719M
+10-22 15:00:21.930    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 244, method: addOneBook
+    当前使用内存10.144531M
+10-22 15:00:22.020    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 266, method: createAddBookDialog
+    当前使用内存10.15625M
+10-22 15:00:22.290    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 296, method: createAddBookDialog
+    当前使用内存10.324219M
+10-22 15:00:22.380    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 262, method: addOneBook
+    当前使用内存10.324219M
+10-22 15:00:31.610    7916-9244/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 1008, method: doInBackground
+    当前使用内存9.8671875M
+10-22 15:00:31.800    7916-9244/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 1047, method: doInBackground
+    当前使用内存9.890625M
+10-22 15:00:31.920    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 1053, method: onPostExecute
+    当前使用内存9.9140625M
+10-22 15:00:31.990    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 1058, method: onPostExecute
+    当前使用内存9.9140625M
+10-22 15:00:33.550    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 227, method: onOptionsItemSelected
+    当前使用内存9.917969M
+10-22 15:00:33.630    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 239, method: onOptionsItemSelected
+    当前使用内存9.917969M
+10-22 15:00:34.130    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 211, method: onCreateOptionsMenu
+    当前使用内存9.984375M
+10-22 15:00:34.220    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 221, method: onCreateOptionsMenu
+    当前使用内存9.984375M
+10-22 15:00:34.990    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 169, method: onNavigationDrawerItemSelected
+    当前使用内存10.0M
+10-22 15:00:35.100    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 178, method: onNavigationDrawerItemSelected
+    当前使用内存10.0M
+10-22 15:00:35.260    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 182, method: onSectionAttached
+    当前使用内存10.0078125M
+10-22 15:00:35.330    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 196, method: onSectionAttached
+    当前使用内存10.0078125M
+10-22 15:00:35.450    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 200, method: restoreActionBar
+    当前使用内存10.0078125M
+10-22 15:00:35.520    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 205, method: restoreActionBar
+    当前使用内存10.0078125M
+10-22 15:00:35.620    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 211, method: onCreateOptionsMenu
+    当前使用内存9.957031M
+10-22 15:00:35.690    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 200, method: restoreActionBar
+    当前使用内存9.957031M
+10-22 15:00:35.760    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 205, method: restoreActionBar
+    当前使用内存9.957031M
+10-22 15:00:36.590    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 227, method: onOptionsItemSelected
+    当前使用内存9.9609375M
+10-22 15:00:36.660    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 244, method: addOneBook
+    当前使用内存9.9609375M
+10-22 15:00:36.740    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 266, method: createAddBookDialog
+    当前使用内存9.964844M
+10-22 15:00:36.980    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 296, method: createAddBookDialog
+    当前使用内存9.972656M
+10-22 15:00:37.060    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 262, method: addOneBook
+    当前使用内存9.972656M
+10-22 15:00:37.740    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 156, method: onTrimMemory
+    当前使用内存10.0078125M
+10-22 15:00:37.800    7916-7916/com.jessicaxu.ReadJiffy.app I/System.out﹕ RAM state level:15
+10-22 15:00:37.890    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 160, method: onTrimMemory
+    当前使用内存10.0078125M
+10-22 15:00:44.830    7916-9510/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 1008, method: doInBackground
+    当前使用内存10.027344M
+10-22 15:00:45.120    7916-9510/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 1047, method: doInBackground
+    当前使用内存10.0234375M
+10-22 15:00:45.250    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 1053, method: onPostExecute
+    当前使用内存10.03125M
+10-22 15:00:45.350    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 1058, method: onPostExecute
+    当前使用内存10.035156M
+10-22 15:00:47.070    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 227, method: onOptionsItemSelected
+    当前使用内存10.058594M
+10-22 15:00:47.160    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 239, method: onOptionsItemSelected
+    当前使用内存10.0625M
+10-22 15:00:47.700    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 211, method: onCreateOptionsMenu
+    当前使用内存10.1171875M
+10-22 15:00:47.770    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 221, method: onCreateOptionsMenu
+    当前使用内存10.125M
+10-22 15:00:49.340    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 169, method: onNavigationDrawerItemSelected
+    当前使用内存10.105469M
+10-22 15:00:49.460    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 178, method: onNavigationDrawerItemSelected
+    当前使用内存10.109375M
+10-22 15:00:49.610    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 182, method: onSectionAttached
+    当前使用内存10.1171875M
+10-22 15:00:49.720    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 196, method: onSectionAttached
+    当前使用内存10.121094M
+10-22 15:00:49.840    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 200, method: restoreActionBar
+    当前使用内存10.136719M
+10-22 15:00:49.920    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 205, method: restoreActionBar
+    当前使用内存10.140625M
+10-22 15:00:50.070    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 211, method: onCreateOptionsMenu
+    当前使用内存10.167969M
+10-22 15:00:50.130    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 200, method: restoreActionBar
+    当前使用内存10.1796875M
+10-22 15:00:50.200    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 205, method: restoreActionBar
+    当前使用内存10.1875M
+10-22 15:00:52.410    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 444, method: onClickTimer
+    当前使用内存10.316406M
+10-22 15:00:52.510    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 466, method: onClickTimer
+    当前使用内存10.3203125M
+10-22 15:00:55.550    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 989, method: isTiming
+    当前使用内存10.328125M
+10-22 15:00:55.690    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 990, method: isTiming
+    当前使用内存10.328125M
+10-22 15:00:55.760    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 905, method: startTimer
+    当前使用内存10.3359375M
+10-22 15:00:55.830    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 927, method: startTimer
+    当前使用内存10.363281M
+10-22 15:01:55.880    7916-7989/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 959, method: updateBookInfo
+    当前使用内存10.121094M
+10-22 15:01:55.990    7916-7989/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 981, method: updateBookInfo
+    当前使用内存10.121094M
+10-22 15:02:23.530    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 989, method: isTiming
+    当前使用内存10.253906M
+10-22 15:02:23.710    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 990, method: isTiming
+    当前使用内存10.253906M
+10-22 15:02:23.780    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 934, method: stopTimer
+    当前使用内存10.253906M
+10-22 15:02:23.890    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 945, method: stopTimer
+    当前使用内存10.253906M
+10-22 15:02:25.480    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 227, method: onOptionsItemSelected
+    当前使用内存10.269531M
+10-22 15:02:25.550    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 239, method: onOptionsItemSelected
+    当前使用内存10.269531M
+10-22 15:02:26.130    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 211, method: onCreateOptionsMenu
+    当前使用内存10.285156M
+10-22 15:02:26.190    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 221, method: onCreateOptionsMenu
+    当前使用内存10.285156M
+10-22 15:02:26.850    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 169, method: onNavigationDrawerItemSelected
+    当前使用内存10.5625M
+10-22 15:02:26.930    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 178, method: onNavigationDrawerItemSelected
+    当前使用内存10.5625M
+10-22 15:02:27.020    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 182, method: onSectionAttached
+    当前使用内存10.558594M
+10-22 15:02:27.090    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 196, method: onSectionAttached
+    当前使用内存10.558594M
+10-22 15:02:27.200    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 200, method: restoreActionBar
+    当前使用内存10.558594M
+10-22 15:02:27.260    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 205, method: restoreActionBar
+    当前使用内存10.558594M
+10-22 15:02:27.370    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 211, method: onCreateOptionsMenu
+    当前使用内存10.574219M
+10-22 15:02:27.440    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 200, method: restoreActionBar
+    当前使用内存10.574219M
+10-22 15:02:27.500    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 205, method: restoreActionBar
+    当前使用内存10.574219M
+10-22 15:02:29.500    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 798, method: onClickStartRead
+    当前使用内存10.613281M
+10-22 15:02:29.570    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 841, method: getViewInfo
+    当前使用内存10.613281M
+10-22 15:02:29.650    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 885, method: getViewInfo
+    当前使用内存10.613281M
+10-22 15:02:29.790    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 169, method: onNavigationDrawerItemSelected
+    当前使用内存10.621094M
+10-22 15:02:29.810   7916-10138/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 1008, method: doInBackground
+    当前使用内存10.621094M
+10-22 15:02:29.870    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 178, method: onNavigationDrawerItemSelected
+    当前使用内存10.621094M
+10-22 15:02:29.900   7916-10138/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 1047, method: doInBackground
+    当前使用内存10.621094M
+10-22 15:02:29.940    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 820, method: onClickStartRead
+    当前使用内存10.628906M
+10-22 15:02:29.970   7916-10146/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 1008, method: doInBackground
+    当前使用内存10.628906M
+10-22 15:02:30.030    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 182, method: onSectionAttached
+    当前使用内存10.6328125M
+10-22 15:02:30.070   7916-10146/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 1047, method: doInBackground
+    当前使用内存10.6328125M
+10-22 15:02:30.090    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 196, method: onSectionAttached
+    当前使用内存10.6328125M
+10-22 15:02:30.160    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 200, method: restoreActionBar
+    当前使用内存10.6328125M
+10-22 15:02:30.250    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 205, method: restoreActionBar
+    当前使用内存10.6328125M
+10-22 15:02:30.340    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 1053, method: onPostExecute
+    当前使用内存10.636719M
+10-22 15:02:30.410    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 1058, method: onPostExecute
+    当前使用内存10.636719M
+10-22 15:02:30.490    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 1053, method: onPostExecute
+    当前使用内存10.640625M
+10-22 15:02:30.560    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 1058, method: onPostExecute
+    当前使用内存10.640625M
+10-22 15:02:36.910    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 370, method: onPercentClick
+    当前使用内存10.5078125M
+10-22 15:02:36.980    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 382, method: onPercentClick
+    当前使用内存10.5078125M
+10-22 15:02:38.190    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 841, method: getViewInfo
+    当前使用内存10.5078125M
+10-22 15:02:38.190    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ BookInfo()
+10-22 15:02:38.190    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ BookInfo()
+10-22 15:02:38.290    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 885, method: getViewInfo
+    当前使用内存10.5078125M
+10-22 15:02:38.390    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 386, method: createPercentDialog
+    当前使用内存10.5078125M
+10-22 15:02:38.530    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 440, method: createPercentDialog
+    当前使用内存10.5078125M
+10-22 15:02:42.420    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 169, method: onNavigationDrawerItemSelected
+    当前使用内存10.59375M
+10-22 15:02:42.430    7916-8794/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 1008, method: doInBackground
+    当前使用内存10.59375M
+10-22 15:02:42.500    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 178, method: onNavigationDrawerItemSelected
+    当前使用内存10.59375M
+10-22 15:02:42.530    7916-8794/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 1047, method: doInBackground
+    当前使用内存10.535156M
+10-22 15:02:42.590    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 182, method: onSectionAttached
+    当前使用内存10.542969M
+10-22 15:02:42.610    7916-8794/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 1008, method: doInBackground
+    当前使用内存10.542969M
+10-22 15:02:42.660    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 196, method: onSectionAttached
+    当前使用内存10.542969M
+10-22 15:02:42.700    7916-8794/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 1047, method: doInBackground
+    当前使用内存10.542969M
+10-22 15:02:42.780    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 200, method: restoreActionBar
+    当前使用内存10.5625M
+10-22 15:02:42.840    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 205, method: restoreActionBar
+    当前使用内存10.5625M
+10-22 15:02:42.930    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 1053, method: onPostExecute
+    当前使用内存10.5859375M
+10-22 15:02:43.020    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 1058, method: onPostExecute
+    当前使用内存10.589844M
+10-22 15:02:43.090    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 1053, method: onPostExecute
+    当前使用内存10.589844M
+10-22 15:02:43.170    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 1058, method: onPostExecute
+    当前使用内存10.589844M
+10-22 15:02:48.110    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 320, method: deleteOneItem
+    当前使用内存10.6953125M
+10-22 15:02:48.180    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 335, method: deleteOneItem
+    当前使用内存10.707031M
+10-22 15:02:49.960    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 342, method: createDeleteDialog
+    当前使用内存10.714844M
+10-22 15:02:50.130    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 366, method: createDeleteDialog
+    当前使用内存10.7890625M
+10-22 15:02:51.270    7916-9510/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 1008, method: doInBackground
+    当前使用内存10.792969M
+10-22 15:02:51.480    7916-9510/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 1047, method: doInBackground
+    当前使用内存10.824219M
+10-22 15:02:51.550    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 1053, method: onPostExecute
+    当前使用内存10.828125M
+10-22 15:02:51.620    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 1058, method: onPostExecute
+    当前使用内存10.8359375M
+10-22 15:03:10.260    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 113, method: onPause
+    当前使用内存10.8515625M
+10-22 15:03:10.330    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 116, method: onPause
+    当前使用内存10.855469M
+10-22 15:03:12.430    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 121, method: onStop
+    当前使用内存8.4140625M
+10-22 15:03:12.530    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 124, method: onStop
+    当前使用内存8.421875M
+10-22 15:03:12.620    7916-7916/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 129, method: onDestroy
+    当前使用内存8.425781M
+10-22 15:03:12.690    7916-7916/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 132, method: onDestroy
+    当前使用内存8.4296875M
+
+10-22 15:03:23.490  10392-10392/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 67, method: onCreate
+    当前使用内存2.4609375M
+10-22 15:03:23.540  10392-10392/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 303, method: setStrictMode
+    当前使用内存2.6914063M
+10-22 15:03:23.600  10392-10392/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 316, method: setStrictMode
+    当前使用内存2.6953125M
+10-22 15:03:23.760  10392-10392/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 169, method: onNavigationDrawerItemSelected
+    当前使用内存3.0820313M
+10-22 15:03:23.810  10392-10392/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 178, method: onNavigationDrawerItemSelected
+    当前使用内存3.0898438M
+10-22 15:03:23.890  10392-10392/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 92, method: onCreate
+    当前使用内存3.1953125M
+10-22 15:03:23.940  10392-10392/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 97, method: onStart
+    当前使用内存3.203125M
+10-22 15:03:23.990  10392-10392/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 211, method: onCreateOptionsMenu
+    当前使用内存3.2382813M
+10-22 15:03:24.060  10392-10392/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 200, method: restoreActionBar
+    当前使用内存3.296875M
+10-22 15:03:24.110  10392-10392/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 205, method: restoreActionBar
+    当前使用内存3.3125M
+10-22 15:03:24.180  10392-10392/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 182, method: onSectionAttached
+    当前使用内存3.4726563M
+10-22 15:03:24.230  10392-10392/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 196, method: onSectionAttached
+    当前使用内存3.4804688M
+10-22 15:03:24.330  10392-10392/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 200, method: restoreActionBar
+    当前使用内存3.5351563M
+10-22 15:03:24.450  10392-10392/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 205, method: restoreActionBar
+    当前使用内存3.5429688M
+10-22 15:03:24.510  10392-10392/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 100, method: onStart
+    当前使用内存3.5898438M
+10-22 15:03:24.570  10392-10392/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 105, method: onResume
+    当前使用内存3.5976563M
+10-22 15:03:24.620  10392-10392/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 108, method: onResume
+    当前使用内存3.6171875M
+10-22 15:03:24.680  10392-10392/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 146, method: onPostResume
+    当前使用内存3.6210938M
+10-22 15:03:24.730  10392-10392/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 148, method: onPostResume
+    当前使用内存3.6289063M
+10-22 15:03:28.180  10392-10392/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 113, method: onPause
+    当前使用内存8.046875M
+10-22 15:03:28.250  10392-10392/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 116, method: onPause
+    当前使用内存8.0546875M
+10-22 15:03:28.340  10392-10392/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 156, method: onTrimMemory
+    当前使用内存6.953125M
+10-22 15:03:28.340  10392-10392/com.jessicaxu.ReadJiffy.app I/System.out﹕ RAM state level:20
+10-22 15:03:28.410  10392-10392/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 160, method: onTrimMemory
+    当前使用内存6.9570313M
+10-22 15:03:30.000  10392-10392/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 121, method: onStop
+    当前使用内存6.7148438M
+10-22 15:03:30.070  10392-10392/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 124, method: onStop
+    当前使用内存6.71875M
+10-22 15:03:30.160  10392-10392/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 156, method: onTrimMemory
+    当前使用内存6.484375M
+10-22 15:03:30.160  10392-10392/com.jessicaxu.ReadJiffy.app I/System.out﹕ RAM state level:80
+10-22 15:03:30.240  10392-10392/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 160, method: onTrimMemory
+    当前使用内存6.4882813M
+10-22 15:03:30.340  10392-10392/com.jessicaxu.ReadJiffy.app I/Enter----->﹕ file: MainActivity.java, Line: 129, method: onDestroy
+    当前使用内存5.75M
+10-22 15:03:30.430  10392-10392/com.jessicaxu.ReadJiffy.app I/Leave----->﹕ file: MainActivity.java, Line: 132, method: onDestroy
+    当前使用内存5.7578125M
+

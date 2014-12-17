@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity" >
+
+    <!--包含“start, start at, edit”的菜单-->
+    <item android:id="@+id/start"
+        android:title="@string/start_timer"
+        app:showAsAction="ifRoom|withText" />
+
+    <item android:id="@+id/start_at"
+        android:title="@string/start_at"
+        app:showAsAction="ifRoom|withText" />
+
+    <item android:id="@+id/adjust_time"
+        android:title="@string/adjust_time"
+        app:showAsAction="ifRoom|withText" />
+
+</menu>

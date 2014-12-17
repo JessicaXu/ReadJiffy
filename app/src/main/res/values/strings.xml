@@ -7,15 +7,87 @@
     <string name="title_section_finished">已读</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="add_book">add_book</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_add_book">ReadJiffy</string>
+    <string name="add_book">添加</string>
+    <string name="exit_app">退出</string>
+    <string name="action_settings">设置</string>
 
-    <string-array name="stateSpinner">
-        <item>在读</item>
-        <item>想读</item>
-        <item>已读</item>
+    <string name="dialog_ok">确定</string>
+    <string name="dialog_cancel">取消</string>
+
+    <string name="stop_timer">停止计时</string>
+    <string name="stop_at">设置停止时间</string>
+
+    <string name="start_timer">开始计时</string>
+    <string name="start_at">设置开始时间</string>
+    <string name="adjust_time">校准时间</string>
+
+    <string name="book_name">书名:</string>
+    <string name="author">作者:</string>
+    <string name="percent">阅读进度:</string>
+    <string name="read_page">已读页数</string>
+    <string name="of">/</string>
+    <string name="total_page">总页数</string>
+    <string name="read_time">已阅读时间:</string>
+    <string name="hours">小时</string>
+    <string name="colon">: </string>
+    <string name="minutes">分钟</string>
+    <string name="total_pages">总页数:</string>
+    <string name="total_time">总用时:</string>
+
+    <string name="title_reading">增加一本正在阅读的书</string>
+    <string name="title_want">增加一本想读的书</string>
+    <string name="title_finished">增加一本已读的书</string>
+
+    <string name="start_read">开始读</string>
+
+    <!--EditView的hint内容-->
+    <string name="hint_book_name">书名</string>
+    <string name="hint_author">作者</string>
+
+    <string-array name="operationSpinner">
+        <item>+</item>
+        <item>-</item>
     </string-array>
 
+    <string name="alert_image_content_description">Alert Image</string>
+    <string name="init_time">00:00:00</string>
 
+    <!--调试相关信息-->
+    <string name="current_memory">当前使用内存数量(M)</string>
+    <string name="file_name">file: </string>
+    <string name="line_number">, Line: </string>
+    <string name="method_name">, method: </string>
+
+    <!--设置异常信息-->
+    <string name="illegal_argument">illegal argument</string>
+
+    <!--以下是对话框用到的string资源-->
+    <string name="delete">删除</string>
+    <string name="confirm_delete">确定要删除这本书?</string>
+
+    <string name="read_page_title">设置已读页数</string>
+    <string name="read_page_error">已读页数不能为0</string>
+    <string name="read_page_suggestion">已读页数不能大于总页数</string>
+
+    <string name="set_date">设置日期</string>
+    <string name="date_format">yyyy-MM-dd cccc</string>
+    <string name="date_suggestion">设置日期不能晚于:</string>
+
+    <string name="init">init</string>
+    <string name="time_format">yyyy-MM-dd HH:mm:ss</string>
+    <string name="time_suggestion">设置的时间要早于:</string>
+    <string name="time_alarm">设置的时间不能晚于当前时间</string>
+    <string name="period_alarm">设置的结束时间不能早于这个计时时间段的开始时间</string>
+
+    <string name="adjust_suggestion">注意!减掉的时间不能大于当前计时总和:</string>
+
+    <string name="left">(</string>
+    <string name="right">)</string>
+    <string name="comma">,</string>
+
+    <!--图片的描述信息-->
+    <string name="del_description">删除一本书</string>
+    <string name="menu_description">进行计时设置</string>
+
+    <string name="switch_to_reading">移动到"正在阅读"列表</string>
 </resources>

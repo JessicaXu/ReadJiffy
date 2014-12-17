@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<pre-dex-items>
+<items version="2" >
 
     <item
-        dex="/opt/android/workspace/ReadJiffy/app/build/intermediates/pre-dexed/debug/classes-906de26a70a41efc8d19ff7e1633bce597bac15e.jar"
-        jar="/opt/android/workspace/ReadJiffy/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/classes.jar"
+        jar="D:\Program Files\Android\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
         jumboMode="false"
         revision="19.1.0"
-        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28"/>
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="E:\code\Android\ReadJiffy\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-b1cd452c9f7e8f930f0821eb70bd9d7542935010.jar" />
+    </item>
     <item
-        dex="/opt/android/workspace/ReadJiffy/app/build/intermediates/pre-dexed/debug/support-v4-19.1.0-ba3b7843bcfe38fc4d91e1c79e52bd046611a1d0.jar"
-        jar="/opt/android/android-studio/sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
+        jar="E:\code\Android\ReadJiffy\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\classes.jar"
         jumboMode="false"
         revision="19.1.0"
-        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
+        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28">
+        <dex dex="E:\code\Android\ReadJiffy\app\build\intermediates\pre-dexed\debug\classes-6d7afc7254f6f3ff097ca8b05a2872fc706ab331.jar" />
+    </item>
 
-</pre-dex-items>
+</items>

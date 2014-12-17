@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity" >
+
+    <!--包含“stop, stop at, edit, edit running time”的菜单-->
+    <item android:id="@+id/stop"
+        android:title="@string/stop_timer"
+        app:showAsAction="ifRoom|withText" />
+
+    <item android:id="@+id/stop_at"
+        android:title="@string/stop_at"
+        app:showAsAction="ifRoom|withText" />
+
+</menu><!-- From: file:/E:/code/Android/ReadJiffy/app/src/main/res/menu/stop_menu.xml -->

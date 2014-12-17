@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="CustomBlue" parent="@style/_CustomBlue"/>
+
+  <style name="_CustomBlue" parent="Theme.AppCompat.Light.DarkActionBar">
+
+    <item name="android:editTextStyle">@style/EditTextCustomBlue</item>
+
+    <item name="android:textColorHighlight">#992e52b4</item>
+
+    <item name="android:listViewStyle">@style/ListViewCustomBlue</item>
+
+    <item name="android:spinnerItemStyle">@style/SpinnerItemCustomBlue</item>
+
+    <item name="popupMenuStyle">@style/PopupMenu.Readjiffy</item>
+
+  </style>
+
+</resources>

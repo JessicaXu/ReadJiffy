@@ -1,0 +1,42 @@
+//在worker thread里面new一个handler时出现这个异常。需要有Looper.prepare和Looper.loop才能new一个handler。
+07-31 11:13:37.335  28594-28594/com.jessicaxu.ReadJiffy.app I/System.out﹕ mClickTimes:1
+07-31 11:13:37.345  28594-28594/com.jessicaxu.ReadJiffy.app I/System.out﹕ main
+07-31 11:13:37.355  28594-29103/com.jessicaxu.ReadJiffy.app W/dalvikvm﹕ threadid=11: thread exiting with uncaught exception (group=0x40ea7438)
+07-31 11:13:37.355  28594-29103/com.jessicaxu.ReadJiffy.app W/System.err﹕ java.lang.RuntimeException: Can't create handler inside thread that has not called Looper.prepare()
+07-31 11:13:37.365  28594-29103/com.jessicaxu.ReadJiffy.app W/System.err﹕ at android.os.Handler.<init>(Handler.java:121)
+07-31 11:13:37.365  28594-29103/com.jessicaxu.ReadJiffy.app W/System.err﹕ at com.jessicaxu.ReadJiffy.app.thread.TimerHandler.<init>(TimerHandler.java:16)
+07-31 11:13:37.365  28594-29103/com.jessicaxu.ReadJiffy.app W/System.err﹕ at com.jessicaxu.ReadJiffy.app.adapter.MyCursorAdapter$1$1.run(MyCursorAdapter.java:53)
+07-31 11:13:37.365  28594-29103/com.jessicaxu.ReadJiffy.app W/System.err﹕ at java.lang.Thread.run(Thread.java:856)
+
+//程序从后台唤醒时会出现这个异常。
+07-31 17:14:36.069    6643-6643/com.jessicaxu.ReadJiffy.app W/dalvikvm﹕ threadid=1: thread exiting with uncaught exception (group=0x40e2b438)
+07-31 17:14:36.069    6643-6643/com.jessicaxu.ReadJiffy.app W/System.err﹕ java.lang.IllegalStateException: trying to requery an already closed cursor  android.database.sqlite.SQLiteCursor@41671b08
+07-31 17:14:36.069    6643-6643/com.jessicaxu.ReadJiffy.app W/System.err﹕ at android.app.Activity.performRestart(Activity.java:5056)
+07-31 17:14:36.069    6643-6643/com.jessicaxu.ReadJiffy.app W/System.err﹕ at android.app.ActivityThread.handleSleeping(ActivityThread.java:3145)
+07-31 17:14:36.069    6643-6643/com.jessicaxu.ReadJiffy.app W/System.err﹕ at android.app.ActivityThread.access$2700(ActivityThread.java:137)
+07-31 17:14:36.069    6643-6643/com.jessicaxu.ReadJiffy.app W/System.err﹕ at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1388)
+07-31 17:14:36.069    6643-6643/com.jessicaxu.ReadJiffy.app W/System.err﹕ at android.os.Handler.dispatchMessage(Handler.java:99)
+07-31 17:14:36.079    6643-6643/com.jessicaxu.ReadJiffy.app W/System.err﹕ at android.os.Looper.loop(Looper.java:137)
+07-31 17:14:36.079    6643-6643/com.jessicaxu.ReadJiffy.app W/System.err﹕ at android.app.ActivityThread.main(ActivityThread.java:4815)
+07-31 17:14:36.079    6643-6643/com.jessicaxu.ReadJiffy.app W/System.err﹕ at java.lang.reflect.Method.invokeNative(Native Method)
+07-31 17:14:36.079    6643-6643/com.jessicaxu.ReadJiffy.app W/System.err﹕ at java.lang.reflect.Method.invoke(Method.java:511)
+07-31 17:14:36.079    6643-6643/com.jessicaxu.ReadJiffy.app W/System.err﹕ at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:842)
+07-31 17:14:36.079    6643-6643/com.jessicaxu.ReadJiffy.app W/System.err﹕ at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:609)
+07-31 17:14:36.079    6643-6643/com.jessicaxu.ReadJiffy.app W/System.err﹕ at dalvik.system.NativeStart.main(Native Method)
+
+//在一本书进行计时过程中，点击“+”就会出现这个异常。点击返回键也会出现这个异常。
+07-31 18:07:55.009  10782-10782/com.jessicaxu.ReadJiffy.app I/Enter----->(TimerHandler﹕ handleMessage: Line 34)
+07-31 18:07:55.009  10782-10782/com.jessicaxu.ReadJiffy.app W/dalvikvm﹕ threadid=1: thread exiting with uncaught exception (group=0x40e2b438)
+07-31 18:07:55.019  10782-10782/com.jessicaxu.ReadJiffy.app W/System.err﹕ android.database.StaleDataException: Attempting to access a closed CursorWindow.Most probable cause: cursor is deactivated prior to calling this method.
+07-31 18:07:55.019  10782-10782/com.jessicaxu.ReadJiffy.app W/System.err﹕ at android.database.AbstractWindowedCursor.checkPosition(AbstractWindowedCursor.java:139)
+07-31 18:07:55.019  10782-10782/com.jessicaxu.ReadJiffy.app W/System.err﹕ at android.database.AbstractWindowedCursor.getString(AbstractWindowedCursor.java:50)
+07-31 18:07:55.029  10782-10782/com.jessicaxu.ReadJiffy.app W/System.err﹕ at com.jessicaxu.ReadJiffy.app.thread.TimerHandler.handleMessage(TimerHandler.java:48)
+07-31 18:07:55.029  10782-10782/com.jessicaxu.ReadJiffy.app W/System.err﹕ at android.os.Handler.dispatchMessage(Handler.java:99)
+07-31 18:07:55.029  10782-10782/com.jessicaxu.ReadJiffy.app W/System.err﹕ at android.os.Looper.loop(Looper.java:137)
+07-31 18:07:55.039  10782-10782/com.jessicaxu.ReadJiffy.app W/System.err﹕ at android.app.ActivityThread.main(ActivityThread.java:4815)
+07-31 18:07:55.039  10782-10782/com.jessicaxu.ReadJiffy.app W/System.err﹕ at java.lang.reflect.Method.invokeNative(Native Method)
+07-31 18:07:55.039  10782-10782/com.jessicaxu.ReadJiffy.app W/System.err﹕ at java.lang.reflect.Method.invoke(Method.java:511)
+07-31 18:07:55.039  10782-10782/com.jessicaxu.ReadJiffy.app W/System.err﹕ at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:842)
+07-31 18:07:55.039  10782-10782/com.jessicaxu.ReadJiffy.app W/System.err﹕ at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:609)
+07-31 18:07:55.039  10782-10782/com.jessicaxu.ReadJiffy.app W/System.err﹕ at dalvik.system.NativeStart.main(Native Method)
+

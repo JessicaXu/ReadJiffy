@@ -1,16 +1,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
         android:orderInCategory="100"
         app:showAsAction="never" />
 
-    <!--
-    <item android:id="@+id/add_book"
-        android:title="@string/add_book"
-        android:icon="@drawable/add_book"
-        app:showAsAction="ifRoom|withText" />
+
+    <item android:id="@+id/exit_app"
+        android:title="@string/exit_app"
+        app:showAsAction="ifRoom|withText"/>
     -->
 
 </menu>
-<!-- From: file:/opt/android/workspace/ReadJiffy/app/src/main/res/menu/global.xml -->
+<!-- From: file:/E:/code/Android/ReadJiffy/app/src/main/res/menu/global.xml -->

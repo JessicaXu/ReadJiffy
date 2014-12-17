@@ -5,7 +5,10 @@
 
     <item android:id="@+id/add_book"
         android:title="@string/add_book"
-        android:icon="@drawable/add_book"
-        app:showAsAction="ifRoom|withText" />
+        app:showAsAction="ifRoom|withText"/>
+
+    <item android:id="@+id/exit_app"
+        android:title="@string/exit_app"
+        app:showAsAction="ifRoom|withText"/>
 
 </menu>
