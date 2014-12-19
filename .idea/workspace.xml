@@ -17,8 +17,12 @@
         <option name="pid" value="" />
       </filter>
       <filter>
+        <option name="logLevel" value="verbose" />
+        <option name="logMessagePattern" value="" />
+        <option name="logTagPattern" value="" />
         <option name="name" value="app: com.jessicaxu.ReadJiffy.app" />
         <option name="packageNamePattern" value="com.jessicaxu.ReadJiffy.app" />
+        <option name="pid" value="" />
       </filter>
     </filters>
   </component>
@@ -39,86 +43,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82be808c-6f5a-4d2f-b71f-4b1a62d3f296" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/del.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/content/BookCP.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/content/BookDbHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/CustomCompute.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/others/CustomCursorAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/CustomDialog.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/MetaData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/test/PressureTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/TaskParam.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/TimeConsumeTask.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/others/TimerService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_19_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_add_finished.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_add_want.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_adjust_time.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_alert.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/dialog_divider.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_set_date.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_set_percent.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_set_time.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/image_button_background.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/listitem_finished.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/listitem_want.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/start_menu.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/stop_menu.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_19_1_0.xml" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\build\intermediates\libs\app-debug.ap_" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\assets\tangshi.ttf" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\java\com\jessicaxu\ReadJiffy\app\ui\AddBookActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\java\com\jessicaxu\ReadJiffy\app\ui\CustomTextView.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\java\com\jessicaxu\readjiffy\app\adapter\MyCursorAdapter.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\java\com\jessicaxu\readjiffy\app\data\BookDatabase.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\res\drawable-hdpi\add_book.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\res\drawable-hdpi\del.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\res\drawable-hdpi\ic_launcher1.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\res\drawable-hdpi\ic_overflow.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\res\drawable-hdpi\top_background.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\res\drawable-mdpi\drawer_shadow.9.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\res\drawable-mdpi\ic_drawer.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\res\drawable-mdpi\ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\res\drawable-xhdpi\drawer_shadow.9.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\res\drawable-xhdpi\ic_drawer.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\res\drawable-xhdpi\ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\res\drawable-xxhdpi\drawer_shadow.9.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\res\drawable-xxhdpi\ic_drawer.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\res\drawable-xxhdpi\ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\res\menu\add_book.xml" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\res\values\styles.xml" afterPath="" />
-      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\tracelog.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="E:\code\Android\ReadJiffy\app\build\generated\source\buildConfig\debug\com\jessicaxu\ReadJiffy\app\BuildConfig.java" afterPath="$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/com/jessicaxu/ReadJiffy/app/BuildConfig.java" />
-      <change type="MODIFICATION" beforePath="E:\code\Android\ReadJiffy\app\src\main\java\com\jessicaxu\ReadJiffy\app\ui\ContentFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/ContentFragment.java" />
-      <change type="MODIFICATION" beforePath="E:\code\Android\ReadJiffy\app\src\main\java\com\jessicaxu\ReadJiffy\app\ui\MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="E:\code\Android\ReadJiffy\app\src\main\java\com\jessicaxu\ReadJiffy\app\ui\NavigationDrawerFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/NavigationDrawerFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v7/appcompat/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v7/appcompat/R.java" />
-      <change type="MODIFICATION" beforePath="E:\code\Android\ReadJiffy\app\build\generated\source\r\debug\com\jessicaxu\ReadJiffy\app\R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/jessicaxu/ReadJiffy/app/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ReadJiffy.iml" afterPath="$PROJECT_DIR$/ReadJiffy.iml" />
-      <change type="MODIFICATION" beforePath="E:\code\Android\ReadJiffy\app\src\main\java\com\jessicaxu\ReadJiffy\app\util\TraceLog.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/TraceLog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/color.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/color.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_content.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_content.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_navigation_drawer.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_navigation_drawer.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/global.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/global.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradlew.bat" afterPath="$PROJECT_DIR$/gradlew.bat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MOVED" beforePath="E:\code\Android\ReadJiffy\app\src\main\java\com\jessicaxu\readjiffy\app\data\BookInfo.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/BookInfo.java" />
-      <change type="MOVED" beforePath="E:\code\Android\ReadJiffy\app\src\main\res\drawable-hdpi\drawer_shadow.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/drawer_shadow.9.png" />
-      <change type="MOVED" beforePath="E:\code\Android\ReadJiffy\app\src\main\res\drawable-hdpi\ic_drawer.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/ic_drawer.png" />
-      <change type="MOVED" beforePath="E:\code\Android\ReadJiffy\app\src\main\res\drawable-hdpi\ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-nodpi/ic_launcher.png" />
-      <change type="MOVED" beforePath="E:\code\Android\ReadJiffy\app\src\main\res\layout\activity_add_book.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_add_reading.xml" />
-      <change type="MOVED" beforePath="E:\code\Android\ReadJiffy\app\src\main\res\layout\book_list_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/listitem_reading.xml" />
+      <change type="DELETED" beforePath="E:\code\Android\ReadJiffy\app\src\main\java\com\jessicaxu\ReadJiffy\app\util\TraceLog.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/content/BookCP.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/content/BookCP.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/content/BookDbHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/content/BookDbHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/BookInfo.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/BookInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/ContentFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/ContentFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/CustomCompute.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/CustomCompute.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/others/CustomCursorAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/others/CustomCursorAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/CustomDialogBuilder.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/CustomDialogBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/NavigationDrawerFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/NavigationDrawerFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/TimeConsumeTask.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/TimeConsumeTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/others/TimerService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/others/TimerService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ReadJiffy.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -146,112 +83,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/MainActivity.java">
+      <file leaf-file-name="ContentFragment.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/ContentFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.60474306" vertical-offset="1870" max-vertical-offset="4454">
-              <caret line="135" column="31" selection-start-line="135" selection-start-column="31" selection-end-line="135" selection-end-column="31" />
-              <folding>
-                <element signature="e#1344#1539#0" expanded="true" />
-                <element signature="e#1528#1529#0" expanded="true" />
-                <element signature="e#2971#3012#0" expanded="true" />
-                <element signature="e#3099#3137#0" expanded="true" />
-                <element signature="e#3228#3270#0" expanded="true" />
-                <element signature="e#3355#3391#0" expanded="true" />
-                <element signature="e#5689#5722#0" expanded="true" />
-                <element signature="e#5878#5908#0" expanded="true" />
-                <element signature="e#6072#6106#0" expanded="true" />
-                <element signature="e#6192#6228#0" expanded="true" />
-                <element signature="e#7102#7653#0" expanded="true" />
-                <element signature="e#7642#7643#0" expanded="true" />
-                <element signature="e#9461#9490#0" expanded="true" />
-                <element signature="e#9528#9559#0" expanded="true" />
-                <element signature="e#9599#9630#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="global.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/global.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding>
-                <element signature="e#189#214#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/main.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-              <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
-              <folding>
-                <element signature="e#268#286#0" expanded="true" />
-                <element signature="e#392#410#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.12" vertical-offset="50" max-vertical-offset="1683">
-              <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TimerService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/others/TimerService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="402" max-vertical-offset="2720">
-              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.63978493" vertical-offset="306" max-vertical-offset="3910">
+              <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1504#1642#0" expanded="true" />
-                <element signature="e#1635#1636#0" expanded="true" />
-                <element signature="e#2810#3188#0" expanded="true" />
-                <element signature="e#3177#3178#0" expanded="true" />
+                <element signature="e#5300#5336#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BookInfo.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/BookInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1802" max-vertical-offset="5423">
-              <caret line="111" column="46" selection-start-line="111" selection-start-column="46" selection-end-line="111" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_main.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-          <provider selected="true" editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomCursorAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/others/CustomCursorAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4295" max-vertical-offset="16235">
-              <caret line="290" column="7" selection-start-line="290" selection-start-column="7" selection-end-line="290" selection-end-column="7" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -812,7 +652,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/start_menu.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/stop_menu.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/GlobalMetaData.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/dialog_set_date.xml" />
@@ -834,7 +673,6 @@
         <option value="$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/com/jessicaxu/ReadJiffy/app/BuildConfig.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/customblue_list_selector_holo_light.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/ContentFragment.java.orig" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/CustomDialogBuilder.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_dialog_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/test/ContentProviderTest.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_content.xml" />
@@ -843,7 +681,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/color.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/image_button_background.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/TaskParam.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/TimeConsumeTask.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/listitem_finished.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/test/PressureTest.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/listitem_reading.xml" />
@@ -851,18 +688,21 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/TraceLog.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/ContentFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/content/BookCP.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/MetaData.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/content/BookDbHelper.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/CustomCompute.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/BookInfo.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/others/TimerService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/others/CustomCursorAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/global.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/content/BookCP.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/content/BookDbHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/others/CustomCursorAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/others/TimerService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/ContentFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/CustomDialogBuilder.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/NavigationDrawerFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/BookInfo.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/CustomCompute.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/TimeConsumeTask.java" />
       </list>
     </option>
   </component>
@@ -901,9 +741,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1258,6 +1097,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1494,24 +1334,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3270869" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41226575" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26458833" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4684838" sideWeight="0.60590017" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290469" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20801815" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49744463" sideWeight="0.42586988" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.49744463" sideWeight="0.3214826" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49744463" sideWeight="0.3214826" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.23850085" sideWeight="0.5003997" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2927383" sideWeight="0.49722221" order="0" side_tool="false" content_ui="combo" />
@@ -1525,7 +1363,9 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41226575" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33170733" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20801815" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1560,12 +1400,6 @@
           <properties />
           <option name="timeStamp" value="156" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/others/CustomCursorAdapter.java</url>
-          <line>199</line>
-          <properties />
-          <option name="timeStamp" value="175" />
-        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -1595,18 +1429,9 @@
           <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1504#1642#0" expanded="true" />
-            <element signature="e#1635#1636#0" expanded="true" />
-            <element signature="e#2810#3188#0" expanded="true" />
-            <element signature="e#3177#3178#0" expanded="true" />
+            <element signature="e#1615#1827#0" expanded="true" />
+            <element signature="e#1820#1821#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/TraceLog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="697">
-          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -1732,13 +1557,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/CustomDialogBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="815" max-vertical-offset="1224">
-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-mdpi/customblue_btn_default_disabled_focused_holo_light.9.png">
       <provider editor-type-id="images">
         <state />
@@ -1822,13 +1640,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/NavigationDrawerFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43601894" vertical-offset="4559" max-vertical-offset="4981">
-          <caret line="313" column="7" selection-start-line="313" selection-start-column="7" selection-end-line="313" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.09139785" vertical-offset="0" max-vertical-offset="578">
@@ -1850,80 +1661,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35695538" vertical-offset="153" max-vertical-offset="748">
           <caret line="17" column="46" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/content/BookCP.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5556" max-vertical-offset="5848">
-          <caret line="345" column="46" selection-start-line="345" selection-start-column="46" selection-end-line="345" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/content/BookDbHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="248" max-vertical-offset="1547">
-          <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/MetaData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1574" max-vertical-offset="1836">
-          <caret line="100" column="53" selection-start-line="100" selection-start-column="53" selection-end-line="100" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/TaskParam.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3046595" vertical-offset="0" max-vertical-offset="558">
-          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/CustomCompute.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7562724" vertical-offset="513" max-vertical-offset="1071">
-          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/TimeConsumeTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0" vertical-offset="0" max-vertical-offset="1088">
-          <caret line="23" column="62" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/ContentFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3382353" vertical-offset="2594" max-vertical-offset="3638">
-          <caret line="192" column="54" selection-start-line="192" selection-start-column="54" selection-end-line="192" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/TraceLog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="117" max-vertical-offset="697">
-          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/others/CustomCursorAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4295" max-vertical-offset="16235">
-          <caret line="290" column="7" selection-start-line="290" selection-start-column="7" selection-end-line="290" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/BookInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1695" max-vertical-offset="5423">
-          <caret line="111" column="46" selection-start-line="111" selection-start-column="46" selection-end-line="111" selection-end-column="46" />
           <folding />
         </state>
       </provider>
@@ -1952,23 +1689,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.12" vertical-offset="50" max-vertical-offset="1683">
+        <state vertical-scroll-proportion="0.0" vertical-offset="50" max-vertical-offset="1683">
           <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/others/TimerService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="402" max-vertical-offset="2720">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1504#1642#0" expanded="true" />
-            <element signature="e#1635#1636#0" expanded="true" />
-            <element signature="e#2810#3188#0" expanded="true" />
-            <element signature="e#3177#3178#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1976,9 +1699,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="e#189#214#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1986,33 +1707,130 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
           <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
-          <folding>
-            <element signature="e#268#286#0" expanded="true" />
-            <element signature="e#392#410#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60474306" vertical-offset="1870" max-vertical-offset="4454">
-          <caret line="135" column="31" selection-start-line="135" selection-start-column="31" selection-end-line="135" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="4709">
+          <caret line="57" column="26" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="26" />
           <folding>
-            <element signature="e#1344#1539#0" expanded="true" />
-            <element signature="e#1528#1529#0" expanded="true" />
-            <element signature="e#2971#3012#0" expanded="true" />
-            <element signature="e#3099#3137#0" expanded="true" />
-            <element signature="e#3228#3270#0" expanded="true" />
-            <element signature="e#3355#3391#0" expanded="true" />
-            <element signature="e#5689#5722#0" expanded="true" />
-            <element signature="e#5878#5908#0" expanded="true" />
-            <element signature="e#6072#6106#0" expanded="true" />
-            <element signature="e#6192#6228#0" expanded="true" />
-            <element signature="e#7102#7653#0" expanded="true" />
-            <element signature="e#7642#7643#0" expanded="true" />
-            <element signature="e#9461#9490#0" expanded="true" />
-            <element signature="e#9528#9559#0" expanded="true" />
-            <element signature="e#9599#9630#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/content/BookDbHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.84767026" vertical-offset="1023" max-vertical-offset="1632">
+          <caret line="90" column="38" selection-start-line="90" selection-start-column="38" selection-end-line="90" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/content/BookCP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="6103">
+          <caret line="59" column="26" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/others/CustomCursorAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="17323">
+          <caret line="76" column="26" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="26" />
+          <folding>
+            <element signature="e#12594#13312#0" expanded="true" />
+            <element signature="e#13301#13302#0" expanded="true" />
+            <element signature="e#33525#33567#0" expanded="true" />
+            <element signature="e#33603#33644#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/others/TimerService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="2873">
+          <caret line="47" column="8" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1615#1827#0" expanded="true" />
+            <element signature="e#1820#1821#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/CustomDialogBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7504587" vertical-offset="730" max-vertical-offset="1326">
+          <caret line="76" column="33" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/NavigationDrawerFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="817" max-vertical-offset="4998">
+          <caret line="82" column="8" selection-start-line="82" selection-start-column="8" selection-end-line="82" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/TimeConsumeTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21326165" vertical-offset="0" max-vertical-offset="1190">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/BookInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5483871" vertical-offset="0" max-vertical-offset="5440">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/CustomCompute.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3046595" vertical-offset="0" max-vertical-offset="1105">
+          <caret line="10" column="52" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/MetaData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.4874552" vertical-offset="870" max-vertical-offset="1836">
+          <caret line="100" column="53" selection-start-line="100" selection-start-column="53" selection-end-line="100" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/util/TaskParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3046595" vertical-offset="0" max-vertical-offset="558">
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jessicaxu/ReadJiffy/app/ui/ContentFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.63978493" vertical-offset="306" max-vertical-offset="3910">
+          <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5300#5336#0" expanded="true" />
           </folding>
         </state>
       </provider>

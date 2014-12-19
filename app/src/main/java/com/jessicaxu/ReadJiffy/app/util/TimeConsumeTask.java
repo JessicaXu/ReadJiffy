@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 
-import com.jessicaxu.ReadJiffy.app.R;
 import com.jessicaxu.ReadJiffy.app.content.BookCP;
 
 public class TimeConsumeTask extends AsyncTask<TaskParam, Integer, Cursor> {

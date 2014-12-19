@@ -3,6 +3,7 @@ package com.jessicaxu.ReadJiffy.app.ui;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -23,27 +24,33 @@ public class CustomDialogBuilder extends AlertDialog.Builder {
     private final TextView mTitle;
     /** optional alert dialog image */
     private final ImageView mIcon;
+    private static final String TAG = "CustomDialogBuilder";
 
 
     public CustomDialogBuilder(Context context) {
         super(context);
-
+        Log.d(TAG, "enter CustomDialogBuilder");
         mDialogView = View.inflate(context, R.layout.custom_dialog_layout, null);
         setView(mDialogView);
 
         mTitle = (TextView) mDialogView.findViewById(R.id.alertTitle);
         mIcon = (ImageView) mDialogView.findViewById(R.id.icon);
+        Log.d(TAG, "leave CustomDialogBuilder");
     }
 
     @Override
     public CustomDialogBuilder setTitle(CharSequence text) {
+        Log.d(TAG, "enter setTitle");
         mTitle.setText(text);
+        Log.d(TAG, "leave setTitle");
         return this;
     }
 
     @Override
     public CustomDialogBuilder setIcon( Drawable icon) {
+        Log.d(TAG, "enter setIcon");
         mIcon.setImageDrawable(icon);
+        Log.d(TAG, "leave setIcon");
         return this;
     }
 
@@ -56,14 +63,18 @@ public class CustomDialogBuilder extends AlertDialog.Builder {
      * @param context 上下文
      */
     public CustomDialogBuilder setCustomView(int resId, Context context) {
+        Log.d(TAG, "enter setCustomView");
         View customView = View.inflate(context, resId, null);
         ((FrameLayout)mDialogView.findViewById(R.id.customPanel)).addView(customView);
+        Log.d(TAG, "leave setCustomView");
         return this;
     }
 
     @Override
     public AlertDialog show() {
+        Log.d(TAG, "enter show");
         if (mTitle.getText().equals("")) mDialogView.findViewById(R.id.topPanel).setVisibility(View.GONE);
+        Log.d(TAG, "leave show");
         return super.show();
     }
 
