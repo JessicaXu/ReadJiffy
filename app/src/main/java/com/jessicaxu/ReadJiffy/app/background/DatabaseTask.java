@@ -1,4 +1,4 @@
-package com.jessicaxu.ReadJiffy.app.util;
+package com.jessicaxu.ReadJiffy.app.background;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -6,29 +6,33 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 
-import com.jessicaxu.ReadJiffy.app.content.BookCP;
+import com.jessicaxu.ReadJiffy.app.data.BookCP;
+import com.jessicaxu.ReadJiffy.app.data.MetaData;
 
-public class TimeConsumeTask extends AsyncTask<TaskParam, Integer, Cursor> {
+public class DatabaseTask extends AsyncTask<TaskParam, Integer, Cursor> {
     @Override
     protected Cursor doInBackground(TaskParam... taskParam) {
 
         Cursor cursor = null;
-        BookInfo bookInfo = taskParam[0].mBookInfo;
+        Activity activity = taskParam[0].mActivity;
+        ContentValues contentValues = taskParam[0].mContentValues;
         String operation = taskParam[0].mOperation;
         String tableName = taskParam[0].mTableName;
-        Activity activity = taskParam[0].mActivity;
+        String keyCol = taskParam[0].mKeyCol;
+        String keyValue = taskParam[0].mKeyValue;
+        String orderBy = taskParam[0].mOrderBy;
+
 
         Uri uri = BookCP.getContentUri(tableName);
-        String[] bookName = {bookInfo.mBookName};
-        ContentValues contentValues = CustomCompute.getContentValues(bookInfo);
+        String[] sKeyValue = {keyValue};
 
         if(operation.equals(MetaData.OPERATION_QUERY)) {
             cursor = activity.getContentResolver().query(
                     uri,
                     null,
-                    MetaData.KEY_BOOK_NAME + "= ?",
-                    bookName,
-                    MetaData.KEY_BOOK_NAME);
+                    keyCol + "= ?",
+                    sKeyValue,
+                    orderBy);
         } else if(operation.equals(MetaData.OPERATION_INSERT)) {
             activity.getContentResolver().insert(
                     uri,
@@ -37,13 +41,13 @@ public class TimeConsumeTask extends AsyncTask<TaskParam, Integer, Cursor> {
             activity.getContentResolver().update(
                     uri,
                     contentValues,
-                    MetaData.KEY_BOOK_NAME + " = ?",
-                    bookName);
+                    keyCol + " = ?",
+                    sKeyValue);
         } else if(operation.equals(MetaData.OPERATION_DELETE)) {
             activity.getContentResolver().delete(
                     uri,
-                    MetaData.KEY_BOOK_NAME + " = ?",
-                    bookName);
+                    keyCol + " = ?",
+                    sKeyValue);
         } else {
             throw new IllegalArgumentException("illegal_argument");
         }

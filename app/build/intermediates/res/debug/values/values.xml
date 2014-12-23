@@ -166,9 +166,10 @@
     <string name="adjust_suggestion">注意!减掉的时间不能大于当前计时总和:</string>
     <string name="adjust_time">校准时间</string>
     <string name="alert_image_content_description">Alert Image</string>
-    <string name="app_name">ReadJiffy</string>
+    <string name="app_name">悦读时刻</string>
     <string name="author">作者:</string>
     <string name="book_name">书名:</string>
+    <string name="book_text">本书</string>
     <string name="colon">: </string>
     <string name="comma">,</string>
     <string name="confirm_delete">确定要删除这本书?</string>
@@ -195,6 +196,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="of">/</string>
+    <string name="page_text">页</string>
     <string name="percent">阅读进度:</string>
     <string name="period_alarm">设置的结束时间不能早于这个计时时间段的开始时间</string>
     <string name="read_page">已读页数</string>
@@ -216,12 +218,18 @@
     <string name="title_finished">增加一本已读的书</string>
     <string name="title_reading">增加一本正在阅读的书</string>
     <string name="title_section_finished">已读</string>
+    <string name="title_section_home">首页</string>
     <string name="title_section_reading">在读</string>
     <string name="title_section_want">想读</string>
     <string name="title_want">增加一本想读的书</string>
+    <string name="total_books_info">您已阅读完</string>
     <string name="total_page">总页数</string>
+    <string name="total_page_info">加起来共</string>
     <string name="total_pages">总页数:</string>
     <string name="total_time">总用时:</string>
+    <string name="total_time_info">您阅读的总时间是：</string>
+    <string name="welcome_info">悦读时刻，记录您阅读路上的每一步</string>
+    <string name="zero_info">0</string>
     <!-- From: file:/E:/code/Android/ReadJiffy/app/src/main/res/values/themes_customblue.xml -->
     <eat-comment/>
     <style name="CustomBlue" parent="@style/_CustomBlue"/>

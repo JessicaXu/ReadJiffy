@@ -1,5 +1,7 @@
-package com.jessicaxu.ReadJiffy.app.util;
+package com.jessicaxu.ReadJiffy.app.data;
 
+import android.content.ContentValues;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -21,11 +23,12 @@ public class BookInfo {
     public int mTotalPage;
     public int mMinutes;
     public int mHours;
+    private static final String TAG = "BookInfo";
 
     public BookInfo() {
-        TraceLog.printEntrance("BookInfo()");
+        Log.d(TAG, "enter BookInfo()");
         setDefaultValue();
-        TraceLog.printExit("BookInfo()");
+        Log.d(TAG, "leave BookInfo()");
     }
 
     /*
@@ -51,7 +54,7 @@ public class BookInfo {
      * get BookInfo from dialogView。
      */
     public void getBookInfo(View dialogView, int resource) {
-        TraceLog.printEntrance("BookInfo(Activity activity)");
+        Log.d(TAG, "enter BookInfo(Activity activity)");
 
         switch (resource) {
         case R.layout.dialog_add_reading:
@@ -69,7 +72,7 @@ public class BookInfo {
             throw new IllegalArgumentException("illegal resource!");
         }
 
-        TraceLog.printExit("BookInfo(Activity activity)");
+        Log.d(TAG, "leave BookInfo(Activity activity)");
     }
 
     /*
@@ -278,10 +281,10 @@ public class BookInfo {
      *从EditText获取String
      */
     private String getEditTextString(View dialogView, int id) {
-        TraceLog.printEntrance("getEditTextString");
+        Log.d(TAG, "enter getEditTextString");
         EditText editText= (EditText)dialogView.findViewById(id);
         String rv = editText.getText().toString();
-        TraceLog.printExit("getEditTextString");
+        Log.d(TAG, "leave getEditTextString");
         return rv;
     }
 
@@ -318,5 +321,26 @@ public class BookInfo {
      */
     private boolean isBlank(String s) {
         return s.equals("") || (s.trim().equals(""));
+    }
+
+    /*
+    *将BookInfo封装到ContentValues中
+    */
+    public ContentValues setContentValues() {
+        Log.d(TAG, "enter getContentValues");
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(MetaData.KEY_BOOK_NAME, mBookName);
+        contentValues.put(MetaData.KEY_AUTHOR, mAuthor);
+        contentValues.put(MetaData.KEY_READ_PAGE, mReadPage);
+        contentValues.put(MetaData.KEY_TOTAL_PAGE, mTotalPage);
+        contentValues.put(MetaData.KEY_MINUTES, mMinutes);
+        contentValues.put(MetaData.KEY_HOURS, mHours);
+        contentValues.put(MetaData.KEY_TIME_STRING, mTimeString);
+        contentValues.put(MetaData.KEY_PERCENT, mPercent);
+        contentValues.put(MetaData.KEY_TIMER_SECONDS, mTimerSeconds);
+
+        Log.d(TAG, "leave getContentValues");
+        return contentValues;
     }
 }

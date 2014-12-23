@@ -13,7 +13,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:background="#f5e9ae"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
@@ -35,7 +35,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:background="#dcdcdc"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
@@ -59,7 +59,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:background="#dcdcdc"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView

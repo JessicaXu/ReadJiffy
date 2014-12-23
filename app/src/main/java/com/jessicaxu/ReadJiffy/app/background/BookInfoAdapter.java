@@ -1,10 +1,11 @@
-package com.jessicaxu.ReadJiffy.app.others;
+package com.jessicaxu.ReadJiffy.app.background;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Paint;
 import android.support.v7.widget.PopupMenu;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,27 +23,26 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.jessicaxu.ReadJiffy.app.R;
-import com.jessicaxu.ReadJiffy.app.ui.CustomDialog;
-import com.jessicaxu.ReadJiffy.app.ui.MainActivity;
-import com.jessicaxu.ReadJiffy.app.util.*;
+import com.jessicaxu.ReadJiffy.app.data.*;
+import com.jessicaxu.ReadJiffy.app.ui.*;
 
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 //ADD THIS CLASS BY JESSICAXU, CUSTOM MY OWN ListView.
-public class CustomCursorAdapter extends SimpleCursorAdapter {
+public class BookInfoAdapter extends DataAdapter {
     private boolean mIsTiming = false;
     private MainActivity mMainActivity;
     private Calendar mStartCalendar;
     private int mContentPosition;
     private CursorAdapterCallbacks mCallbacks = null;
-
+    private static final String TAG = "BookInfoAdapter";
     /*
      *构造函数
      */
-    public CustomCursorAdapter(Context context, MainActivity mainActivity,
-                               int layout, String[] from, int[] to, int contentPosition){
+    public BookInfoAdapter(Context context, MainActivity mainActivity,
+                           int layout, String[] from, int[] to, int contentPosition){
         super(context, layout, null, from, to, 0);
         mMainActivity = mainActivity;
         mContentPosition = contentPosition;
@@ -54,7 +54,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        TraceLog.printEntrance("getView");
+        Log.d(TAG, "enter getView");
         //get reference to the row
         View itemView = super.getView(position, convertView, parent);
         switch (mContentPosition){
@@ -73,7 +73,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
 
         //自定义Item颜色
         setItemColor(position, itemView);
-        TraceLog.printExit("getView");
+        Log.d(TAG, "leave getView");
         return itemView;
     }
 
@@ -81,20 +81,21 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
      *设置自定义的条目颜色
      */
     private void setItemColor(int position, View itemView) {
-        TraceLog.printEntrance("setItemColor");
+        Log.d(TAG, "enter setItemColor");
         if (position % 2 == 0) {
             itemView.setBackgroundColor(MetaData.READ_JIFFY_ACCENT1);
         }
         else {
             itemView.setBackgroundColor(MetaData.READ_JIFFY_ACCENT2);
         }
-        TraceLog.printExit("setItemColor");
+        Log.d(TAG, "leave setItemColor");
     }
 
     /*
      *设置正在阅读状态的ListView的各个View的监听器
      */
     private void setReadingClickListener(View itemView){
+        Log.d(TAG, "enter setReadingClickListener");
         //click timer information
         onClickTimer(itemView);
 
@@ -106,25 +107,31 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
 
         //click menu button
         onClickMenuBtn(itemView);
+        Log.d(TAG, "leave setReadingClickListener");
     }
 
     private void setWantClickListener(View itemView){
+        Log.d(TAG, "enter setWantClickListener");
         //start read
         onClickStartRead(itemView);
 
         //delete
         onClickDelete(itemView, MetaData.SQLite_TABLE_WANT);
+        Log.d(TAG, "leave setWantClickListener");
     }
 
     private void setFinishedListener(View itemView){
+        Log.d(TAG, "enter setFinishedListener");
         //delete
         onClickDelete(itemView, MetaData.SQLite_TABLE_FINISHED);
+        Log.d(TAG, "leave setFinishedListener");
     }
 
     /*
      *设置Timer TextView的监听器
      */
     private void onClickTimer(final View itemView){
+        Log.d(TAG, "enter onClickTimer");
         final TextView timerText = (TextView)itemView.findViewById(R.id.timerText);
         timerText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,12 +145,14 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
                 }
             }
         });
+        Log.d(TAG, "leave  onClickTimer");
     }
 
     /*
      *设置删除按钮的点击响应函数
      */
     private void onClickDelete(final View itemView, final String tableName) {
+        Log.d(TAG, "enter onClickDelete");
         final ImageButton delButton = (ImageButton)itemView.findViewById(R.id.delButton);
         delButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,7 +172,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
                 setDeleteDialogButtonListener(positiveButton, customDialog, bookName, tableName);
             }
         });
-
+        Log.d(TAG, "leave onClickDelete");
     }
 
     /*
@@ -171,6 +180,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
      */
     private void setDeleteDialogButtonListener(Button positiveButton, final CustomDialog customDialog,
                                                final String bookName, final String tableName) {
+        Log.d(TAG, "enter setDeleteDialogButtonListener");
         positiveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -180,15 +190,22 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
                 customDialog.mDialog.dismiss();
             }
         });
+        Log.d(TAG, "leave setDeleteDialogButtonListener");
     }
 
     public void deleteBookInfo(BookInfo bookInfo, String tableName){
-        TaskParam taskParam = new TaskParam(bookInfo,
+        Log.d(TAG, "enter deleteBookInfo");
+        TaskParam taskParam = new TaskParam(
+                bookInfo.setContentValues(),
                 MetaData.OPERATION_DELETE,
                 tableName,
-                mMainActivity);
-        TimeConsumeTask tct = new TimeConsumeTask();
+                mMainActivity,
+                MetaData.KEY_BOOK_NAME,
+                bookInfo.mBookName,
+                MetaData.KEY_BOOK_NAME);
+        DatabaseTask tct = new DatabaseTask();
         tct.execute(taskParam);
+        Log.d(TAG, "leave deleteBookInfo");
     }
 
     /*
@@ -196,14 +213,18 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
      * 虽然只有一句话，但还是写一个函数放在这里，以防将来有什么变化。
      */
     private boolean isTiming(View itemView) {
+        Log.d(TAG, "enter isTiming");
         BookInfo bookInfo = getViewInfo(itemView);
+        boolean rv;
         if((!bookInfo.mTimerSeconds.equals(mMainActivity.getString(R.string.init_time)))
                 || mIsTiming){
-            return true;
+            rv = true;
         }
         else{
-            return false;
+            rv = false;
         }
+        Log.d(TAG, "leave isTiming");
+        return rv;
     }
 
     /*
@@ -212,7 +233,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
     private void startTimer(final String name,
             final String tableName,
             final int period) {
-        TraceLog.printEntrance("startTimer");
+        Log.d(TAG, "enter startTimer");
         mIsTiming = true;
         if(period == 0) {
             mStartCalendar = Calendar.getInstance();
@@ -223,14 +244,14 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
                 mMainActivity.getString(R.string.start_timer),
                 Toast.LENGTH_SHORT).show();
 
-        TraceLog.printExit("startTimer");
+        Log.d(TAG, "leave startTimer");
     }
 
     /*
      * 点击和长按timerText的时候停止计时
      */
     private void stopTimer() {
-        TraceLog.printEntrance("stopTimer");
+        Log.d(TAG, "enter stopTimer");
 
         mCallbacks.stopTimerService();
         mIsTiming = false;
@@ -238,7 +259,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
         Toast.makeText(mMainActivity.getApplicationContext(),
                 mMainActivity.getString(R.string.stop_timer),
                 Toast.LENGTH_SHORT).show();
-        TraceLog.printExit("stopTimer");
+        Log.d(TAG, "leave stopTimer");
     }
 
     public static interface CursorAdapterCallbacks{
@@ -250,55 +271,73 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
      *get bookName from view
      */
     private String getBookName(View itemView) {
+        Log.d(TAG, "enter getBookName");
         TextView bookNameTx = (TextView)itemView.findViewById(R.id.bookNameText);
-        return bookNameTx.getText().toString();
+        String rv = bookNameTx.getText().toString();
+        Log.d(TAG, "leave getBookName");
+        return rv;
     }
 
     /*
      *获取条目的作者
      */
     private String getAuthor(View itemView) {
+        Log.d(TAG, "enter getAuthor");
         TextView authorView = (TextView)itemView.findViewById(R.id.authorText);
-        return authorView.getText().toString();
+        String rv = authorView.getText().toString();
+        Log.d(TAG, "leave getAuthor");
+        return rv;
     }
 
     /*
      *获取已读页数
      */
     private int getReadPages(View itemView) {
+        Log.d(TAG, "enter getReadPages");
         TextView readPageView = (TextView)itemView.findViewById(R.id.readPageText);
-        return Integer.parseInt(readPageView.getText().toString());
+        int rv = Integer.parseInt(readPageView.getText().toString());
+        Log.d(TAG, "leave getReadPages");
+        return rv;
     }
 
     /*
      *获得总页数
      */
     private int getTotalPages(View itemView) {
+        Log.d(TAG, "enter getTotalPages");
         TextView totalPageView = (TextView)itemView.findViewById(R.id.totalPageText);
-        return Integer.parseInt(totalPageView.getText().toString());
+        int rv = Integer.parseInt(totalPageView.getText().toString());
+        Log.d(TAG, "leave getTotalPages");
+        return rv;
     }
 
     /*
      *获取时间字符串
      */
     private String getTimeString(View itemView) {
+        Log.d(TAG, "enter getTimeString");
         TextView totalTimeView = (TextView)itemView.findViewById(R.id.totalTimeText);
-        return totalTimeView.getText().toString();
+        String rv = totalTimeView.getText().toString();
+        Log.d(TAG, "leave getTimeString");
+        return rv;
     }
 
     /*
      *获取计时器的显示
      */
     private String getTimerSeconds(View itemView) {
+        Log.d(TAG, "enter getTimerSeconds");
         TextView timerSecondsView = (TextView)itemView.findViewById(R.id.timerText);
-        return timerSecondsView.getText().toString();
+        String rv = timerSecondsView.getText().toString();
+        Log.d(TAG, "leave getTimerSeconds");
+        return rv;
     }
 
     /*
     *获取ListView的Item中的某个TextView所在Item对应的BookInfo
     */
     private BookInfo getViewInfo(View itemView) {
-
+        Log.d(TAG, "enter getViewInfo");
         BookInfo bookInfo = new BookInfo();
         bookInfo.mBookName = getBookName(itemView);
         bookInfo.mAuthor = getAuthor(itemView);
@@ -323,7 +362,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
             default:
                 throw new IllegalArgumentException(mMainActivity.getString(R.string.illegal_argument));
         }
-
+        Log.d(TAG, "leave getViewInfo");
         return bookInfo;
     }
 
@@ -331,6 +370,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
      *当点击百分比时，进行修改百分比的操作
      */
     public void onClickPercent(final View itemView) {
+        Log.d(TAG, "enter onClickPercent");
         LinearLayout percentView = (LinearLayout)itemView.findViewById(R.id.readPercent);
         percentView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -346,6 +386,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
                 setPercentDialogButtonListener(positiveButton, customDialog, bookInfo);
             }
         });
+        Log.d(TAG, "leave onClickPercent");
     }
 
     /*
@@ -354,6 +395,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
     private void setPercentDialogButtonListener(Button positiveButton,
                                                 final CustomDialog customDialog,
                                                 final BookInfo bookInfo) {
+        Log.d(TAG, "enter setPercentDialogButtonListener");
         positiveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 EditText readView = (EditText)customDialog.mDialogView.
@@ -374,12 +416,14 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
                 }
             }
         });
+        Log.d(TAG, "leave setPercentDialogButtonListener");
     }
 
     /*
      *当书籍的阅读页数等于总页数时，将书籍状态设定为已读
      */
     private void switchStatusToFinish(BookInfo bookInfo) {
+        Log.d(TAG, "enter switchStatusToFinish");
         BookInfo tempBookInfo = new BookInfo();
         tempBookInfo.mBookName = bookInfo.mBookName;
         tempBookInfo.mAuthor = bookInfo.mAuthor;
@@ -387,44 +431,60 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
         tempBookInfo.mHours = bookInfo.mHours;
         tempBookInfo.mTimeString = tempBookInfo.getTimeString();
 
-        TaskParam taskParam1 = new TaskParam(tempBookInfo,
+        TaskParam taskParam1 = new TaskParam(
+                tempBookInfo.setContentValues(),
                 MetaData.OPERATION_INSERT,
                 MetaData.SQLite_TABLE_FINISHED,
-                mMainActivity);
-        TimeConsumeTask tct1 = new TimeConsumeTask();
+                mMainActivity,
+                MetaData.KEY_BOOK_NAME,
+                tempBookInfo.mBookName,
+                null);
+        DatabaseTask tct1 = new DatabaseTask();
         tct1.execute(taskParam1);
 
-        TaskParam taskParam2 = new TaskParam(bookInfo,
+        TaskParam taskParam2 = new TaskParam(
+                bookInfo.setContentValues(),
                 MetaData.OPERATION_DELETE,
                 MetaData.SQLite_TABLE_READING,
-                mMainActivity);
-        TimeConsumeTask tct2 = new TimeConsumeTask();
+                mMainActivity,
+                MetaData.KEY_BOOK_NAME,
+                bookInfo.mBookName,
+                null);
+        DatabaseTask tct2 = new DatabaseTask();
         tct2.execute(taskParam2);
 
         Toast.makeText(mMainActivity.getApplicationContext(),
                 R.string.switch_to_reading,
                 Toast.LENGTH_SHORT).show();
         //mMainActivity.mNavigationDrawerFragment.selectItem(MetaData.DRAWER_POSITION_FINISHED);
+        Log.d(TAG, "leave switchStatusToFinish");
     }
 
     /*
      *将新的页码更新到数据库
      */
     private void updateReadPercent(BookInfo bookInfo, int readPages) {
+        Log.d(TAG, "enter updateReadPercent");
         bookInfo.mReadPage = readPages;
         bookInfo.mPercent = bookInfo.getPercent();
-        TaskParam taskParam = new TaskParam(bookInfo,
+        TaskParam taskParam = new TaskParam(
+                bookInfo.setContentValues(),
                 MetaData.OPERATION_UPDATE,
                 MetaData.SQLite_TABLE_READING,
-                mMainActivity);
-        TimeConsumeTask tct = new TimeConsumeTask();
+                mMainActivity,
+                MetaData.KEY_BOOK_NAME,
+                bookInfo.mBookName,
+                null);
+        DatabaseTask tct = new DatabaseTask();
         tct.execute(taskParam);
+        Log.d(TAG, "leave updateReadPercent");
     }
 
     /*
      *设置菜单按钮的响应函数
      */
     public void onClickMenuBtn(final View itemView) {
+        Log.d(TAG, "enter onClickMenuBtn");
         final ImageButton menuButton = (ImageButton)itemView.findViewById(R.id.menuButton);
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -445,12 +505,14 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
                 popup.show();
             }
         });
+        Log.d(TAG, "leave onClickMenuBtn");
     }
 
     /*
      *处理正在计时时点击菜单按钮的情况
      */
     private void setStopMenuListener(PopupMenu popup, final View itemView) {
+        Log.d(TAG, "enter setStopMenuListener");
         // Set a listener so we are notified if a menu item is clicked
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -470,12 +532,14 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
                 return true;
             }
         });
+        Log.d(TAG, "leave setStopMenuListener");
     }
 
     /*
      *处理不进行计时时点击菜单按钮的情况
      */
     private void setStartMenuListener(PopupMenu popup, final View itemView) {
+        Log.d(TAG, "enter setStartMenuListener");
         // Set a listener so we are notified if a menu item is clicked
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -501,6 +565,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
                 return false;
             }
         });
+        Log.d(TAG, "leave setStartMenuListener");
     }
 
 
@@ -508,6 +573,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
      *调整开始或结束时间
      */
     void onClickSetTime(View itemView) {
+        Log.d(TAG, "enter onClickSetTime");
         //获取到当前view所在的ListView的Item的对应信息,保存在bookInfo中。
         final BookInfo bookInfo = getViewInfo(itemView);
         final CustomDialog customDialog = new CustomDialog(mMainActivity);
@@ -527,23 +593,27 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
 
         final Button positiveButton = customDialog.mDialog.getButton(AlertDialog.BUTTON_POSITIVE);
         setTimeDialogListener(positiveButton, customDialog, calendar, bookInfo, itemView);
+        Log.d(TAG, "leave onClickSetTime");
     }
 
     /*
      *设置date TextView的外观
      */
     private void setDateTextViewAppearance(TextView dateTextView) {
+        Log.d(TAG, "enter setDateTextViewAppearance");
         //设置下划线
         Paint p = new Paint();
         p.setColor(MetaData.READ_JIFFY_HIGHLIGHT);
         dateTextView.setPaintFlags(p.getColor());
         dateTextView.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        Log.d(TAG, "leave setDateTextViewAppearance");
     }
 
     /*
      *设置date TextView的点击响应函数
      */
     private void setDateTextViewListener(final TextView dateTextView, final Calendar calendar) {
+        Log.d(TAG, "enter setDateTextViewListener");
         dateTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -563,6 +633,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
                         calendar, dateTextView, dateSuggestionView);
             }
         });
+        Log.d(TAG, "leave setDateTextViewListener");
     }
 
     /*
@@ -571,6 +642,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
     private void setDatePickerAppearance(CustomDialog datePickerDialog,
                                          Calendar calendar,
                                          TextView dateSuggestionView) {
+        Log.d(TAG, "enter setDatePickerAppearance");
         SimpleDateFormat sdf = new SimpleDateFormat(mMainActivity.getString(R.string.date_format));
 
         dateSuggestionView.setText(mMainActivity.getString(R.string.date_suggestion) +
@@ -579,6 +651,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
         DatePicker datePicker = (DatePicker)datePickerDialog.mDialogView.
                 findViewById(R.id.datePicker);
         setDatePickerDivider(datePicker);
+        Log.d(TAG, "leave setDatePickerAppearance");
     }
 
     /*
@@ -589,6 +662,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
                                        final Calendar calendar,
                                        final TextView dateTextView,
                                        final TextView dateSuggestionView) {
+        Log.d(TAG, "enter setDateDialogListener");
         positiveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -607,6 +681,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
                 }
             }
         });
+        Log.d(TAG, "leave setDateDialogListener");
     }
 
     /*
@@ -617,6 +692,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
                                        final Calendar calendar,
                                        final BookInfo bookInfo,
                                        final View itemView) {
+        Log.d(TAG, "enter setTimeDialogListener");
         positiveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 String str = validateSetTime(customDialog.mDialogView, calendar, itemView);
@@ -641,44 +717,58 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
                 }
             }
         });
+        Log.d(TAG, "leave setTimeDialogListener");
     }
 
     /*
      *校正时间的增加
      */
     private void updateTimeIncrease(int period, BookInfo bookInfo) {
+        Log.d(TAG, "enter updateTimeIncrease");
         int totalMinutes = bookInfo.mMinutes + bookInfo.mHours * 60 + period;
         bookInfo.mMinutes = totalMinutes % 60;
         bookInfo.mHours = totalMinutes / 60;
         bookInfo.mTimeString = bookInfo.getTimeString();
-        TaskParam taskParam = new TaskParam(bookInfo,
+        TaskParam taskParam = new TaskParam(
+                bookInfo.setContentValues(),
                 MetaData.OPERATION_UPDATE,
                 MetaData.SQLite_TABLE_READING,
-                mMainActivity);
-        TimeConsumeTask tct = new TimeConsumeTask();
+                mMainActivity,
+                MetaData.KEY_BOOK_NAME,
+                bookInfo.mBookName,
+                null);
+        DatabaseTask tct = new DatabaseTask();
         tct.execute(taskParam);
+        Log.d(TAG, "leave updateTimeIncrease");
     }
 
     /*
      *校正时间的减少
      */
     private void updateTimeDecrease(int period, BookInfo bookInfo) {
+        Log.d(TAG, "enter updateTimeDecrease");
         int totalMinutes = bookInfo.mMinutes + bookInfo.mHours * 60 - period;
         bookInfo.mMinutes = totalMinutes % 60;
         bookInfo.mHours = totalMinutes / 60;
         bookInfo.mTimeString = bookInfo.getTimeString();
-        TaskParam taskParam = new TaskParam(bookInfo,
+        TaskParam taskParam = new TaskParam(
+                bookInfo.setContentValues(),
                 MetaData.OPERATION_UPDATE,
                 MetaData.SQLite_TABLE_READING,
-                mMainActivity);
-        TimeConsumeTask tct = new TimeConsumeTask();
+                mMainActivity,
+                MetaData.KEY_BOOK_NAME,
+                bookInfo.mBookName,
+                null);
+        DatabaseTask tct = new DatabaseTask();
         tct.execute(taskParam);
+        Log.d(TAG, "leave updateTimeDecrease");
     }
 
     /*
      *用于自定义Picker的分割线颜色
      */
     private void setDividerColor(NumberPicker picker) {
+        Log.d(TAG, "enter setDividerColor");
         Field[] numberPickerFields = NumberPicker.class.getDeclaredFields();
         for (Field field : numberPickerFields) {
             if (field.getName().equals("mSelectionDivider")) {
@@ -692,12 +782,14 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
                 }
             }
         }
+        Log.d(TAG, "leave setDividerColor");
     }
 
     /*
      *自定义TimePicker
      */
     private void setTimePickerDivider(TimePicker timePicker) {
+        Log.d(TAG, "enter setTimePickerDivider");
         try {
             Resources system = Resources.getSystem();
             int hourPickerId = system.getIdentifier("hour", "id", "android");
@@ -711,12 +803,14 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Log.d(TAG, "leave setTimePickerDivider");
     }
 
     /*
     *自定义DatePicker样设
     */
     private void setDatePickerDivider(DatePicker datePicker) {
+        Log.d(TAG, "enter setDatePickerDivider");
         try {
             Field datePickerFields[] = datePicker.getClass().getDeclaredFields();
             for (Field field : datePickerFields) {
@@ -736,12 +830,14 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Log.d(TAG, "leave setDatePickerDivider");
     }
 
     /*
      *校验设置的Date是否符合要求
      */
     private boolean isDateLegal(Calendar calendar) {
+        Log.d(TAG, "enter isDateLegal");
         boolean rv = true;
         Calendar curCalendar = Calendar.getInstance();
         resetTime(curCalendar);
@@ -749,22 +845,24 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
         if(curCalendar.before(calendar)) {
             rv = false;
         }
-        System.out.println("rv:" + rv);
+        Log.d(TAG, "leave isDateLegal");
         return rv;
     }
 
     private void resetTime(Calendar calendar){
+        Log.d(TAG, "enter resetTime");
         calendar.set(Calendar.HOUR, 0);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MILLISECOND, 0);
+        Log.d(TAG, "leave resetTime");
     }
 
     /*
      *设置DateText和TimePicker默认的数值
      */
     private void setViewData(View dialogView) {
-
+        Log.d(TAG, "enter setViewData");
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat(mMainActivity.getString(R.string.date_format));
         TextView dateText = (TextView)dialogView.findViewById(R.id.dateText);
@@ -774,12 +872,14 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
         timePicker.setIs24HourView(true);
         timePicker.setCurrentHour(calendar.get(Calendar.HOUR_OF_DAY));
         timePicker.setCurrentMinute(calendar.get(Calendar.MINUTE));
+        Log.d(TAG, "leave setViewData");
     }
 
     /*
      *设置suggestion信息
      */
     private void setSuggestionText(View dialogView, String str) {
+        Log.d(TAG, "enter setSuggestionText");
         final TextView suggestionText =
                 (TextView)dialogView.findViewById(R.id.suggestion);
 
@@ -794,27 +894,33 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
             suggestionText.setText(str);
             suggestionText.setTextColor(MetaData.READ_JIFFY_RED);
         }
+        Log.d(TAG, "leave setSuggestionText");
     }
 
     /*
      *获取“设置时间”对话框的标题
      */
     private String setDialogTitle(final View itemView) {
+        Log.d(TAG, "enter setDialogTitle");
+        String rv;
         if(!isTiming(itemView)) {
-            return mMainActivity.getString(R.string.start_at);
+            rv = mMainActivity.getString(R.string.start_at);
         } else {
-            return mMainActivity.getString(R.string.stop_at);
+            rv = mMainActivity.getString(R.string.stop_at);
         }
+        Log.d(TAG, "leave setDialogTitle");
+        return rv;
     }
 
     /*
      *从时间对话框中获取日历信息
      */
     Calendar getTimeDialogInfo(View dialogView, Calendar calendar) {
+        Log.d(TAG, "enter getTimeDialogInfo");
         TimePicker timePicker = (TimePicker)dialogView.findViewById(R.id.timePicker);
         calendar.set(Calendar.HOUR_OF_DAY, timePicker.getCurrentHour());
         calendar.set(Calendar.MINUTE, timePicker.getCurrentMinute());
-
+        Log.d(TAG, "leave getTimeDialogInfo");
         return calendar;
     }
 
@@ -822,6 +928,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
      *对时间进行校准，用于补上忘记记录的时间
      */
     void onClickAdjustTime(View itemView) {
+        Log.d(TAG, "enter onClickAdjustTime");
         final BookInfo bookInfo = getViewInfo(itemView);
 
         final CustomDialog customDialog = new CustomDialog(mMainActivity);
@@ -832,18 +939,21 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
 
         final Button positiveButton = customDialog.mDialog.getButton(AlertDialog.BUTTON_POSITIVE);
         setAdjustDialogListener(positiveButton, bookInfo, customDialog);
+        Log.d(TAG, "leave onClickAdjustTime");
     }
 
     /*
      *设置下拉菜单的外观
      */
     private void setSpinnerAppearance(CustomDialog customDialog) {
+        Log.d(TAG, "enter setSpinnerAppearance");
         //设置"+"和"-"的下拉菜单
         Spinner spinner = (Spinner) customDialog.mDialogView.findViewById(R.id.operationSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(mMainActivity,
                 R.array.operationSpinner, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        Log.d(TAG, "leave setSpinnerAppearance");
     }
 
     /*
@@ -852,6 +962,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
     private void setAdjustDialogListener(Button positiveButton,
                                          final BookInfo bookInfo,
                                          final CustomDialog customDialog) {
+        Log.d(TAG, "enter setAdjustDialogListener");
         positiveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -882,26 +993,33 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
                 }
             }
         });
+        Log.d(TAG, "leave setAdjustDialogListener");
     }
 
     /*
      *获取操作类型是增是减
      */
     private String getOperationFromDialog(CustomDialog customDialog) {
+        Log.d(TAG, "enter getOperationFromDialog");
         Spinner spinner = (Spinner) customDialog.mDialogView.
                 findViewById(R.id.operationSpinner);
-        return spinner.getSelectedItem().toString();
+        String rv = spinner.getSelectedItem().toString();
+        Log.d(TAG, "leave getOperationFromDialog");
+        return rv;
     }
 
     /*
      *从调整时间对话框获取时间间隔分钟数
      */
     private int getPeriodFromDialog(CustomDialog customDialog, BookInfo bookInfo) {
+        Log.d(TAG, "enter getPeriodFromDialog");
         int readHours = bookInfo.
                 getEditTextInt(customDialog.mDialogView, R.id.readHours);
         int readMinutes = bookInfo.
                 getEditTextInt(customDialog.mDialogView, R.id.readMinutes);
-        return readMinutes + readHours * 60;
+        int rv = readMinutes + readHours * 60;
+        Log.d(TAG, "leave getPeriodFromDialog");
+        return rv;
     }
 
     /*
@@ -910,7 +1028,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
      * 2.停止时间时不能早于此时间段的开始时间
      */
     private String validateSetTime(View dialogView, Calendar calendar, View itemView) {
-
+        Log.d(TAG, "enter validateSetTime");
         Calendar setCalendar = getTimeDialogInfo(dialogView, calendar);
         Calendar curCalendar = Calendar.getInstance();
         if(setCalendar.after(curCalendar)) {
@@ -922,7 +1040,7 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
         if(!isTiming(itemView)) {
             mStartCalendar = setCalendar;
         }
-
+        Log.d(TAG, "leave validateSetTime");
         return "";
     }
 
@@ -930,18 +1048,21 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
      * 用来计算设置的阅读开始和结束时刻之间的时间段长度。
      */
     private int getPeriod(View dialogView, Calendar calendar) {
-
+        Log.d(TAG, "enter getPeriod");
         Calendar setCalendar = getTimeDialogInfo(dialogView, calendar);
         Calendar curCalendar = Calendar.getInstance();
         long milliseconds = curCalendar.getTimeInMillis() - setCalendar.getTimeInMillis();
 
-        return (int)milliseconds / 1000 / 60;
+        int rv = (int)milliseconds / 1000 / 60;
+        Log.d(TAG, "leave getPeriod");
+        return rv;
     }
 
     /*
   *处于“想读”状态的图书点击"开始阅读"
   */
     public void onClickStartRead(final View itemView) {
+        Log.d(TAG, "enter onClickStartRead");
         Button startButton = (Button)itemView.findViewById(R.id.startButton);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -957,21 +1078,29 @@ public class CustomCursorAdapter extends SimpleCursorAdapter {
                 tempBookInfo.mHours = 0;
                 tempBookInfo.mTimeString = tempBookInfo.getTimeString();
                 TaskParam taskParam1 = new TaskParam(
-                        tempBookInfo,
+                        tempBookInfo.setContentValues(),
                         MetaData.OPERATION_INSERT,
                         MetaData.SQLite_TABLE_READING,
-                        mMainActivity);
-                TimeConsumeTask tct1 = new TimeConsumeTask();
+                        mMainActivity,
+                        MetaData.KEY_BOOK_NAME,
+                        tempBookInfo.mBookName,
+                        null);
+                DatabaseTask tct1 = new DatabaseTask();
                 tct1.execute(taskParam1);
 
-                TaskParam taskParam2 = new TaskParam(bookInfo,
+                TaskParam taskParam2 = new TaskParam(
+                        bookInfo.setContentValues(),
                         MetaData.OPERATION_DELETE,
                         MetaData.SQLite_TABLE_WANT,
-                        mMainActivity);
-                TimeConsumeTask tct2 = new TimeConsumeTask();
+                        mMainActivity,
+                        MetaData.KEY_BOOK_NAME,
+                        bookInfo.mBookName,
+                        null);
+                DatabaseTask tct2 = new DatabaseTask();
                 tct2.execute(taskParam2);
                 //mMainActivity.mNavigationDrawerFragment.selectItem(MetaData.DRAWER_POSITION_READING);
             }
         });
+        Log.d(TAG, "leave onClickStartRead");
     }
 }

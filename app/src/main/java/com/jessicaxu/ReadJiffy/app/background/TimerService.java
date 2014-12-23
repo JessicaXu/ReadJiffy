@@ -1,4 +1,4 @@
-package com.jessicaxu.ReadJiffy.app.others;
+package com.jessicaxu.ReadJiffy.app.background;
 
 import android.app.Notification;
 import android.app.Service;
@@ -7,13 +7,13 @@ import android.database.Cursor;
 import android.os.Binder;
 import android.os.Handler;
 import android.os.IBinder;
+import android.util.Log;
 
 import com.jessicaxu.ReadJiffy.app.R;
-import com.jessicaxu.ReadJiffy.app.content.BookCP;
-import com.jessicaxu.ReadJiffy.app.util.BookInfo;
-import com.jessicaxu.ReadJiffy.app.util.CustomCompute;
-import com.jessicaxu.ReadJiffy.app.util.MetaData;
-import com.jessicaxu.ReadJiffy.app.util.TraceLog;
+import com.jessicaxu.ReadJiffy.app.data.BookCP;
+import com.jessicaxu.ReadJiffy.app.data.BookInfo;
+import com.jessicaxu.ReadJiffy.app.data.MetaData;
+import com.jessicaxu.ReadJiffy.app.data.StatisticInfo;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -29,8 +29,10 @@ public class TimerService extends Service {
     private int mPassedSeconds;
     private static Handler mHandler = new Handler();
     private BookInfo mBookInfo;
+    private static final String TAG = "TimerService";
 
-    private void getBookInfo(Intent intent){
+    private BookInfo getBookInfo(Intent intent){
+        Log.d(TAG, "enter getBookInfo");
         final String name = intent.getStringExtra(MetaData.EXTRA_NAME);
 
         String[] bookName = {name};
@@ -41,25 +43,29 @@ public class TimerService extends Service {
                 bookName,
                 MetaData.KEY_BOOK_NAME);
 
-        mBookInfo = BookCP.getBookInfo(cursor);
+        BookInfo bookInfo = BookCP.getBookInfo(cursor);
         cursor.close();
+        Log.d(TAG, "leave getBookInfo");
+        return bookInfo;
     }
 
     private final Runnable timerRunnable = new Runnable() {
         @Override
         public void run() {
-            updateBookInfo(MetaData.ACTION_UPDATE_SECONDS);
+            Log.d(TAG, "enter run");
+            updateTimeInfo(MetaData.ACTION_UPDATE_SECONDS);
+            Log.d(TAG, "leave run");
         }
     };
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
-        TraceLog.printEntrance("TimerService.java, onStartCommand()");
+        Log.d(TAG, "enter onStartCommand");
         startForegroundService();
-        getBookInfo(intent);
+        mBookInfo = getBookInfo(intent);
         handleCommand(intent);
 
-        TraceLog.printExit("TimerService.java, onStartCommand()");
+        Log.d(TAG, "leave onStartCommand");
         return Service.START_STICKY;
     }
 
@@ -70,27 +76,27 @@ public class TimerService extends Service {
 
     @Override
     public boolean onUnbind(Intent intent) {
-        TraceLog.printEntrance("TimerService.java, onUnbind()");
+        Log.d(TAG, "enter onUnbind");
         super.onUnbind(intent);
-        TraceLog.printExit("TimerService.java, onUnbind()");
+        Log.d(TAG, "leave onUnbind");
 
         return false;
     }
 
     @Override
     public void onDestroy(){
-        TraceLog.printEntrance("TimerService.java, onDestroy()");
+        Log.d(TAG, "enter onDestroy");
         super.onDestroy();
         cancelCommand();
         stopForeground(true);
-        TraceLog.printExit("TimerService.java, onDestroy()");
+        Log.d(TAG, "leave onDestroy");
     }
 
     /*
      *处理计时的任务
      */
     private void handleCommand(final Intent intent){
-
+        Log.d(TAG, "enter handleCommand");
         int period = intent.getIntExtra(MetaData.EXTRA_PERIOD, 0);
 
         mPassedSeconds = period * 60;
@@ -98,37 +104,38 @@ public class TimerService extends Service {
             public void run() {
                 mPassedSeconds++;
                 if(mPassedSeconds%60 == 0) {
-                    getBookInfo(intent);
-                    updateBookInfo(MetaData.ACTION_UPDATE_TOTAL);
+                    mBookInfo = getBookInfo(intent);
+                    updateTimeInfo(MetaData.ACTION_UPDATE_TOTAL);
                 }
                 mHandler.post(timerRunnable);
-                System.out.println("run timer task!");
             }
         };
 
         t.scheduleAtFixedRate(mTimerTask, 1000, 1000);
+        Log.d(TAG, "leave handleCommand");
     }
 
     /*
      *停止计时任务
      */
     private void cancelCommand(){
+        Log.d(TAG, "enter cancelCommand");
         if(mTimerTask!=null) {
             mTimerTask.cancel();
         }
-        updateBookInfo(MetaData.ACTION_RESET_SECONDS);
+        updateTimeInfo(MetaData.ACTION_RESET_SECONDS);
+        Log.d(TAG, "leave cancelCommand");
     }
 
     /*
     * 将计时数据更新到BookInfo中，用来稍后更新数据库的记录
     */
-    private void updateBookInfo(int action) {
+    private void updateTimeInfo(int action) {
+        Log.d(TAG, "enter updateBookInfo");
         switch (action){
             case MetaData.ACTION_UPDATE_TOTAL:
-                int totalMinutes = mBookInfo.mMinutes + mBookInfo.mHours * 60 + 1;
-                mBookInfo.mMinutes = totalMinutes % 60;
-                mBookInfo.mHours = totalMinutes / 60;
-                mBookInfo.mTimeString = mBookInfo.getTimeString();
+                updateBookInfo();
+                //updateStatisticInfo();
                 break;
             case MetaData.ACTION_UPDATE_SECONDS:
                 mBookInfo.mTimerSeconds = mBookInfo.getSecondsString(mPassedSeconds);
@@ -143,15 +150,46 @@ public class TimerService extends Service {
         String[] bookName = {mBookInfo.mBookName};
         getContentResolver().update(
             BookCP.getContentUri(MetaData.SQLite_TABLE_READING),
-            CustomCompute.getContentValues(mBookInfo),
+                mBookInfo.setContentValues(),
             MetaData.KEY_BOOK_NAME + " = ?",
             bookName);
+        Log.d(TAG, "leave updateBookInfo");
     }
 
+    private void updateBookInfo(){
+        int totalMinutes = mBookInfo.mMinutes + mBookInfo.mHours * 60 + 1;
+        mBookInfo.mMinutes = totalMinutes % 60;
+        mBookInfo.mHours = totalMinutes / 60;
+        mBookInfo.mTimeString = mBookInfo.getTimeString();
+    }
+
+    private void updateStatisticInfo(){
+        String[] categoryName = {MetaData.STATISTIC_TOTAL};
+        Cursor cursor = getContentResolver().query(
+                BookCP.getContentUri(MetaData.SQLite_TABLE_STATISTIC),
+                null,
+                MetaData.KEY_CATEGORY_NAME + "= ?",
+                categoryName,
+                MetaData.KEY_CATEGORY_NAME);
+
+        StatisticInfo statisticInfo = BookCP.getStatisticInfo(cursor);
+        cursor.close();
+
+        statisticInfo.mStatisticMinutes += 1;
+        getContentResolver().update(
+                BookCP.getContentUri(MetaData.SQLite_TABLE_STATISTIC),
+                statisticInfo.setContentValues(),
+                MetaData.KEY_CATEGORY_NAME + " = ?",
+                categoryName);
+    }
+
+
     private void startForegroundService(){
+        Log.d(TAG, "enter startForegroundService");
         Notification notification = new Notification(R.drawable.ic_launcher,
                 "ReadJiffy", System.currentTimeMillis());
         notification.setLatestEventInfo(this, "ReadJiffy", "ReadJiffy正在跟踪您的阅读情况", null);
         startForeground(1, notification);
+        Log.d(TAG, "leave startForegroundService");
     }
 }

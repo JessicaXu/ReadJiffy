@@ -24,13 +24,13 @@
         </activity>
 
         <provider
-            android:name=".content.BookCP"
+            android:name=".data.BookCP"
             android:exported="false"
-            android:authorities="com.jessicaxu.ReadJiffy.app.content.bookcp" />
+            android:authorities="com.jessicaxu.ReadJiffy.app.data.bookcp" />
 
         <service
             android:enabled="true"
-            android:name=".others.TimerService"
+            android:name=".background.TimerService"
             android:permission="com.jessicaxu.ReadJiffy"/>
 
     </application>

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ReadJiffy</string>
+    <string name="app_name">悦读时刻</string>
+    <string name="title_section_home">首页</string>
     <string name="title_section_reading">在读</string>
     <string name="title_section_want">想读</string>
     <string name="title_section_finished">已读</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="add_book">添加</string>
@@ -90,4 +92,15 @@
     <string name="menu_description">进行计时设置</string>
 
     <string name="switch_to_reading">移动到"正在阅读"列表</string>
+
+    <!--主页显示的信息-->
+    <string name="welcome_info">悦读时刻，记录您阅读路上的每一步</string>
+    <string name="total_time_info">您阅读的总时间是：</string>
+    <string name="zero_info">0</string>
+    <string name="total_books_info">您已阅读完</string>
+    <string name="book_text">本书</string>
+    <string name="total_page_info">加起来共</string>
+    <string name="page_text">页</string>
+
+
 </resources>

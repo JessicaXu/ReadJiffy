@@ -50,7 +50,7 @@ category#android.intent.category.LAUNCHER
 ADDED from AndroidManifest.xml:22:17
 	android:name
 		ADDED from AndroidManifest.xml:22:27
-provider#com.jessicaxu.ReadJiffy.app.content.BookCP
+provider#com.jessicaxu.ReadJiffy.app.data.BookCP
 ADDED from AndroidManifest.xml:26:9
 	android:authorities
 		ADDED from AndroidManifest.xml:29:13

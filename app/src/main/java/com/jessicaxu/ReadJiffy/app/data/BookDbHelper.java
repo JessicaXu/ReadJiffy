@@ -1,15 +1,21 @@
-package com.jessicaxu.ReadJiffy.app.content;
+package com.jessicaxu.ReadJiffy.app.data;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.jessicaxu.ReadJiffy.app.util.MetaData;
-import com.jessicaxu.ReadJiffy.app.util.TraceLog;
-
 class BookDbHelper extends SQLiteOpenHelper {
     private static final String TAG = "BookDbHelper";
+
+    //创建“在读”数据库表
+    private static final String DATABASE_CREATE_STATISTIC =
+            "CREATE TABLE if not exists " +
+                    MetaData.SQLite_TABLE_STATISTIC + " (" +
+                    MetaData.KEY_ROW_ID + " integer PRIMARY KEY autoincrement," +
+                    MetaData.KEY_CATEGORY_NAME + "," +
+                    MetaData.KEY_STATISTIC_MINUTES + "," +
+                    " UNIQUE (" + MetaData.KEY_CATEGORY_NAME +"));";
 
     //创建“在读”数据库表
     private static final String DATABASE_CREATE_READING =
@@ -64,7 +70,11 @@ class BookDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        TraceLog.printEntrance("onCreate");
+        Log.d(TAG, "enter onCreate");
+
+        Log.w(TAG, DATABASE_CREATE_STATISTIC);
+        db.execSQL(DATABASE_CREATE_STATISTIC);
+
         Log.w(TAG, DATABASE_CREATE_READING);
         db.execSQL(DATABASE_CREATE_READING);
 
@@ -73,14 +83,18 @@ class BookDbHelper extends SQLiteOpenHelper {
 
         Log.w(TAG, DATABASE_CREATE_WANT);
         db.execSQL(DATABASE_CREATE_WANT);
-        TraceLog.printExit("onCreate");
+        Log.d(TAG, "leave onCreate");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        TraceLog.printEntrance("onUpgrade");
+        Log.d(TAG, "enter onUpgrade");
         Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
               + newVersion + ", which will destroy all old data");
+
+        db.execSQL("DROP TABLE IF EXISTS " + MetaData.SQLite_TABLE_STATISTIC);
+        onCreate(db);
+
         db.execSQL("DROP TABLE IF EXISTS " + MetaData.SQLite_TABLE_READING);
         onCreate(db);
 
@@ -89,6 +103,6 @@ class BookDbHelper extends SQLiteOpenHelper {
 
         db.execSQL("DROP TABLE IF EXISTS " + MetaData.SQLite_TABLE_WANT);
         onCreate(db);
-        TraceLog.printExit("onUpgrade");
+        Log.d(TAG, "leave onUpgrade");
     }
 }

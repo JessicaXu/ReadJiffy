@@ -1,11 +1,9 @@
 package com.jessicaxu.ReadJiffy.test;
 
-import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
 
 import com.jessicaxu.ReadJiffy.app.ui.MainActivity;
-import com.jessicaxu.ReadJiffy.app.util.BookInfo;
-import com.jessicaxu.ReadJiffy.app.util.MetaData;
+import com.jessicaxu.ReadJiffy.app.data.BookInfo;
 
 /**
  * 进行压力测试，向数据库添加大量的数据，模拟实际情况下用户输入大量数据的情况
@@ -47,7 +45,6 @@ public class PressureTest extends ActivityInstrumentationTestCase2<MainActivity>
             synchronized (this){
                 wait(60);
             }
-            System.out.println(i + "---->Memory Usage:" + mainActivity.getMemoryInfo());
         }
     }
 }

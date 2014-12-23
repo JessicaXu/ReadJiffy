@@ -1,37 +1,41 @@
 package com.jessicaxu.ReadJiffy.app.ui;
 
-import android.app.ActivityManager;
 import android.app.AlertDialog;
-import android.content.Context;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.support.v4.app.FragmentManager;
+import android.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
 import com.jessicaxu.ReadJiffy.app.R;
-import com.jessicaxu.ReadJiffy.app.others.*;
-import com.jessicaxu.ReadJiffy.app.util.*;
+import com.jessicaxu.ReadJiffy.app.data.*;
+import com.jessicaxu.ReadJiffy.app.background.*;
 
 
 public class MainActivity extends ActionBarActivity
-    implements NavigationDrawerFragment.NavigationDrawerCallbacks,
-               CustomCursorAdapter.CursorAdapterCallbacks{
+    implements DrawerFragment.NavigationDrawerCallbacks,
+               BookInfoAdapter.CursorAdapterCallbacks{
     //Fragment managing the behaviors, interactions and presentation of the navigation drawer.
-    public NavigationDrawerFragment mNavigationDrawerFragment;
+    public DrawerFragment mDrawerFragment;
 
     //Used to store the last screen title.
     private CharSequence mTitle;
     private int mContentPosition = MetaData.CONTENT_POSITION_INIT;
 
+    private static final String TAG = "MainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        TraceLog.printEntrance(getDebugInfo("onCreate"));
+        Log.d(TAG, "enter onCreate");
 
         setStrictMode(true);
 
@@ -45,16 +49,16 @@ public class MainActivity extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mNavigationDrawerFragment = (NavigationDrawerFragment)
+        mDrawerFragment = (DrawerFragment)
                                     getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
 
         // Set up the drawer.
-        mNavigationDrawerFragment.setUp(
+        mDrawerFragment.setUp(
             R.id.navigation_drawer,
             (DrawerLayout) findViewById(R.id.drawer_layout));
 
-        TraceLog.printExit(getDebugInfo("onCreate"));
+        Log.d(TAG, "leave onCreate");
     }
 
     /*
@@ -63,19 +67,31 @@ public class MainActivity extends ActionBarActivity
     */
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        TraceLog.printEntrance(getDebugInfo("onNavigationDrawerItemSelected"));
-        //将MainActivity的BookDatabase传递给ContentFragment.
-        // update the main content by replacing fragments
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-        .replace(R.id.container, ContentFragment.newInstance(position + 1))
-        .commit();
-        System.out.println(getMemoryInfo());
-        TraceLog.printExit(getDebugInfo("onNavigationDrawerItemSelected"));
+        Log.d(TAG, "enter onNavigationDrawerItemSelected");
+        Fragment fragment;
+        switch (position){
+            case MetaData.DRAWER_POSITION_HOME:
+                fragment = new HomeFragment();
+                break;
+            case MetaData.DRAWER_POSITION_READING:
+            case MetaData.DRAWER_POSITION_WANT:
+            case MetaData.DRAWER_POSITION_FINISHED:
+                fragment = ContentFragment.newInstance(position + 1);
+                break;
+            default:
+                throw new IllegalArgumentException(getString(R.string.illegal_argument));
+        }
+
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.commit();
+
+        Log.d(TAG, "leave onNavigationDrawerItemSelected");
     }
 
     public void onSectionAttached(int number) {
-        TraceLog.printEntrance(getDebugInfo("onSectionAttached"));
+        Log.d(TAG, "enter onSectionAttached");
         switch (number) {
         case MetaData.CONTENT_POSITION_READING:
             mTitle = getString(R.string.title_section_reading);
@@ -90,22 +106,22 @@ public class MainActivity extends ActionBarActivity
             throw new IllegalArgumentException(getString(R.string.illegal_argument));
         }
         mContentPosition = number;
-        TraceLog.printExit(getDebugInfo("onSectionAttached"));
+        Log.d(TAG, "enter onSectionAttached");
     }
 
     public void restoreActionBar() {
-        TraceLog.printEntrance(getDebugInfo("restoreActionBar"));
+        Log.d(TAG, "enter restoreActionBar");
         ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
-        TraceLog.printExit(getDebugInfo("restoreActionBar"));
+        Log.d(TAG, "leave restoreActionBar");
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        TraceLog.printEntrance(getDebugInfo("onCreateOptionsMenu"));
-        if (!mNavigationDrawerFragment.isDrawerOpen()) {
+        Log.d(TAG, "enter onCreateOptionsMenu");
+        if (!mDrawerFragment.isDrawerOpen()) {
             // Only show items in the action bar relevant to this screen
             // if the drawer is not showing. Otherwise, let the drawer
             // decide what to show in the action bar.
@@ -114,13 +130,13 @@ public class MainActivity extends ActionBarActivity
             return true;
         }
 
-        TraceLog.printExit(getDebugInfo("onCreateOptionsMenu"));
+        Log.d(TAG, "leave onCreateOptionsMenu");
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        TraceLog.printEntrance(getDebugInfo("onOptionsItemSelected"));
+        Log.d(TAG, "enter onOptionsItemSelected");
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -137,7 +153,7 @@ public class MainActivity extends ActionBarActivity
                 return true;
         }
 
-        TraceLog.printExit(getDebugInfo("onOptionsItemSelected"));
+        Log.d(TAG, "leave onOptionsItemSelected");
         return super.onOptionsItemSelected(item);
     }
 
@@ -145,8 +161,8 @@ public class MainActivity extends ActionBarActivity
      *添加一本书
      */
     void addBook() {
-        TraceLog.printEntrance(getDebugInfo("addBook"));
-        int position = mNavigationDrawerFragment.getSelectedPosition();
+        Log.d(TAG, "enter addBook");
+        int position = mDrawerFragment.getSelectedPosition();
         switch (position) {
         case MetaData.DRAWER_POSITION_READING:
             createAddBookDialog(R.layout.dialog_add_reading,
@@ -163,14 +179,14 @@ public class MainActivity extends ActionBarActivity
         default:
             throw new IllegalArgumentException(getString(R.string.illegal_argument));
         }
-        TraceLog.printExit(getDebugInfo("addBook"));
+        Log.d(TAG, "leave addBook");
     }
 
     /*
      *创建添加一本书的对话框
      */
     void createAddBookDialog(final int resource, String title) {
-        TraceLog.printEntrance(getDebugInfo("createAddBookDialog"));
+        Log.d(TAG, "enter createAddBookDialog");
 
         final CustomDialog customDialog = new CustomDialog(this);
         customDialog.buildDialog(resource, title);
@@ -178,7 +194,7 @@ public class MainActivity extends ActionBarActivity
         final Button positiveButton = customDialog.mDialog.getButton(AlertDialog.BUTTON_POSITIVE);
         setAddDialogButtonListener(positiveButton, customDialog, resource);
 
-        TraceLog.printExit(getDebugInfo("createAddBookDialog"));
+        Log.d(TAG, "leave createAddBookDialog");
     }
 
     /*
@@ -186,6 +202,7 @@ public class MainActivity extends ActionBarActivity
       */
     private void setAddDialogButtonListener(Button positiveButton,
                                             final CustomDialog customDialog, final int resource) {
+        Log.d(TAG, "enter setAddDialogButtonListener");
         positiveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -199,23 +216,57 @@ public class MainActivity extends ActionBarActivity
                 //如果校验不ok,就不可以dismiss,继续显示当前界面，让用户再次输入;
             }
         });
+        Log.d(TAG, "leave setAddDialogButtonListener");
     }
 
     public void addBookInfo(BookInfo bookInfo){
+        Log.d(TAG, "enter addBookInfo");
         TaskParam taskParam = new TaskParam(
-                bookInfo,
+                bookInfo.setContentValues(),
                 MetaData.OPERATION_INSERT,
-                CustomCompute.getTableName(mContentPosition),
-                this);
-        TimeConsumeTask tct = new TimeConsumeTask();
-        tct.execute(taskParam);
+                getTableName(mContentPosition),
+                this,
+                MetaData.KEY_BOOK_NAME,
+                bookInfo.mBookName,
+                null);
+        DatabaseTask databaseTask = new DatabaseTask();
+        databaseTask.execute(taskParam);
+
+        /*
+        if((mContentPosition == MetaData.CONTENT_POSITION_FINISHED) ||
+                (mContentPosition == MetaData.CONTENT_POSITION_READING)){
+            String[] categoryName = {MetaData.STATISTIC_TOTAL};
+            Cursor cursor = getContentResolver().query(
+                    BookCP.getContentUri(MetaData.SQLite_TABLE_STATISTIC),
+                    null,
+                    MetaData.KEY_CATEGORY_NAME + "= ?",
+                    categoryName,
+                    MetaData.KEY_CATEGORY_NAME);
+
+            StatisticInfo statisticInfo = BookCP.getStatisticInfo(cursor);
+            cursor.close();
+            statisticInfo.mStatisticMinutes += bookInfo.mMinutes + bookInfo.mHours * 60;
+            TaskParam statisticParam = new TaskParam(
+                    statisticInfo.setContentValues(),
+                    MetaData.OPERATION_UPDATE,
+                    getTableName(mContentPosition),
+                    this,
+                    MetaData.KEY_CATEGORY_NAME,
+                    statisticInfo.mCategoryName,
+                    null);
+            DatabaseTask statisticTask = new DatabaseTask();
+            statisticTask.execute(statisticParam);
+        }
+        */
+
+        Log.d(TAG, "leave addBookInfo");
     }
 
     /*
      *检测内存泄漏以及可能造成ANR的操作。
      */
     private void setStrictMode(boolean developMode) {
-        TraceLog.printEntrance(getDebugInfo("setStrictMode"));
+        Log.d(TAG, "enter setStrictMode");
         if (developMode) {
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                                        .detectAll()   // or .detectAll() for all detectable problems
@@ -228,45 +279,53 @@ public class MainActivity extends ActionBarActivity
                     .penaltyDeath()
                     .build());
         }
-        TraceLog.printExit(getDebugInfo("setStrictMode"));
-    }
-
-    /*
-     *获取内存信息
-     */
-    public float getMemoryInfo() {
-        int pid = android.os.Process.myPid();
-        ActivityManager activityManager =
-            (ActivityManager)getSystemService(Context.ACTIVITY_SERVICE);
-        android.os.Debug.MemoryInfo[] memoryInfoArray =
-            activityManager.getProcessMemoryInfo(new int[] {pid});
-        return (float) memoryInfoArray[0].getTotalPrivateDirty() / 1024;
-        //System.out.println(s + ":每个app的内存限制是" + activityManager.getMemoryClass() + "M");
-    }
-
-    String getDebugInfo(String methodName) {
-        StackTraceElement ste = new Throwable().getStackTrace()[1];
-        return getString(R.string.file_name) + ste.getFileName() +
-               getString(R.string.line_number) + ste.getLineNumber() +
-               getString(R.string.method_name) + methodName + "\n" +
-               getMemoryInfo();
+        Log.d(TAG, "leave setStrictMode");
     }
 
     public void startTimerService(final String name, final String tableName, final int period){
-        TraceLog.printEntrance(getDebugInfo("startTimerService"));
+        Log.d(TAG, "enter startTimerService");
         Intent intent = new Intent(MetaData.ACTION_FOREGROUND);
         intent.setClass(this, TimerService.class);
         intent.putExtra(MetaData.EXTRA_NAME, name);
         intent.putExtra(MetaData.EXTRA_PERIOD, period);
         startService(intent);
-        TraceLog.printExit(getDebugInfo("startTimerService"));
+        Log.d(TAG, "leave startTimerService");
     }
 
     public void stopTimerService(){
-        TraceLog.printEntrance(getDebugInfo("stopTimerService"));
+        Log.d(TAG, "enter stopTimerService");
 
         stopService(new Intent(this, TimerService.class));
 
-        TraceLog.printExit(getDebugInfo("stopTimerService"));
+        Log.d(TAG, "leave stopTimerService");
+    }
+
+    /*
+     *从NavigationDrawer的选中位置获取数据库的表名
+     */
+    public static String getTableName(int position) {
+        Log.d(TAG, "enter getTableName");
+        String rv = "";
+
+        switch(position) {
+            case MetaData.CONTENT_POSITION_HOME:
+                rv = MetaData.SQLite_TABLE_STATISTIC;
+                break;
+            case MetaData.CONTENT_POSITION_READING:
+                rv = MetaData.SQLite_TABLE_READING;
+                break;
+            case MetaData.CONTENT_POSITION_WANT:
+                rv = MetaData.SQLite_TABLE_WANT;
+                break;
+            case MetaData.CONTENT_POSITION_FINISHED:
+                rv = MetaData.SQLite_TABLE_FINISHED;
+                break;
+            default:
+                System.out.println("unexpected position: "+position);
+                break;
+        }
+
+        Log.d(TAG, "leave getTableName");
+        return rv;
     }
 }

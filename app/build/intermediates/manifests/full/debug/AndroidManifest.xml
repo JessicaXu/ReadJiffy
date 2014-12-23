@@ -30,8 +30,8 @@
         </activity>
 
         <provider
-            android:name="com.jessicaxu.ReadJiffy.app.content.BookCP"
-            android:authorities="com.jessicaxu.ReadJiffy.app.content.bookcp"
+            android:name="com.jessicaxu.ReadJiffy.app.data.BookCP"
+            android:authorities="com.jessicaxu.ReadJiffy.app.data.bookcp"
             android:exported="false" />
 
         <service
