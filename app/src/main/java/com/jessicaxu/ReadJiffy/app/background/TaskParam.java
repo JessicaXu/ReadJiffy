@@ -1,20 +1,17 @@
 package com.jessicaxu.ReadJiffy.app.background;
 
-import android.app.Activity;
 import android.content.ContentValues;
 
 public class TaskParam {
-    public final Activity mActivity;
     public final ContentValues mContentValues;
-    public final String mOperation;
+    public final int mOperation;
     public final String mTableName;
     public final String mKeyCol;
     public final String mKeyValue;
     public final String mOrderBy;
 
-    public TaskParam(ContentValues contentValues, String operation, String tableName,
-                     Activity activity, String keyCol, String orderBy, String keyValue) {
-        mActivity = activity;
+    public TaskParam(ContentValues contentValues, int operation, String tableName,
+                     String keyCol, String keyValue, String orderBy) {
         mContentValues = contentValues;
         mOperation = operation;
         mTableName = tableName;

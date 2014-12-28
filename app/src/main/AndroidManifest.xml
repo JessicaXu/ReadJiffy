@@ -7,6 +7,7 @@
     </uses-permission>
 
     <application
+        android:name="com.jessicaxu.ReadJiffy.app.global.CustomApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"

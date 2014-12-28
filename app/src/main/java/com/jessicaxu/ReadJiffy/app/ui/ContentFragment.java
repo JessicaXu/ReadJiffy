@@ -10,15 +10,12 @@ import android.widget.ListView;
 
 import com.jessicaxu.ReadJiffy.app.R;
 import com.jessicaxu.ReadJiffy.app.background.*;
-import com.jessicaxu.ReadJiffy.app.data.*;
+import com.jessicaxu.ReadJiffy.app.global.MetaData;
 
 /**
  * 点击DrawerNavigation后出现的内容界面，这个界面呈现图书统计信息
  */
 public  class ContentFragment extends LoaderFragment {
-
-    private static final String ARG_SECTION_NUMBER = "section_number";
-    private ListView mBookList;
     private static final String TAG = "ContentFragment";
 
     /**
@@ -30,16 +27,10 @@ public  class ContentFragment extends LoaderFragment {
         Log.d(TAG, "enter newInstance)");
         ContentFragment fragment = new ContentFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+        args.putInt(MetaData.ARG_POSITION, sectionNumber);
         fragment.setArguments(args);
         Log.d(TAG, "leave newInstance)");
         return fragment;
-    }
-
-    public ContentFragment() {
-        super();
-        Log.d(TAG, "enter ContentFragment");
-        Log.d(TAG, "leave ContentFragment");
     }
 
     @Override
@@ -47,23 +38,96 @@ public  class ContentFragment extends LoaderFragment {
                              Bundle savedInstanceState) {
         Log.d(TAG, "enter onCreateView");
         View rootView = inflater.inflate(R.layout.fragment_content, container, false);
-
-        mBookList = (ListView) (rootView.findViewById(R.id.bookList));
-
-        //获取NavigationDrawerFragment选中的Item的position
-        Bundle args = this.getArguments();
-        int position = args.getInt(ARG_SECTION_NUMBER);
-
-        Bundle loaderArgs = new Bundle();
-        loaderArgs.putString(MetaData.ARG_TABLE_NAME,
-                ((MainActivity) getActivity()).getTableName(position));
-        getLoaderManager().initLoader(MetaData.BOOKINFO_LOADER, loaderArgs, this);
-
-        displayListView(position);
+        setViewAdapter(rootView);
         ((MainActivity)getActivity()).restoreActionBar();
 
         Log.d(TAG, "leave onCreateView");
         return rootView;
+    }
+
+    private void setViewAdapter(View rootView){
+        Log.d(TAG, "enter getFromArray");
+        //获取NavigationDrawerFragment选中的Item的position
+        Bundle args = this.getArguments();
+        int position = args.getInt(MetaData.ARG_POSITION);
+        getLoaderManager().initLoader(MetaData.BOOKINFO_LOADER, args, this);
+
+        ListView bookList = (ListView) (rootView.findViewById(R.id.bookList));
+        mDataAdapter = new BookInfoAdapter(
+                getActivity(),
+                getLayout(position),
+                getFromArray(position),
+                getToArray(position),
+                position);
+
+        // Assign adapter to ListView
+        bookList.setAdapter(mDataAdapter);
+    }
+
+    private String[] getFromArray(int position){
+        Log.d(TAG, "enter getFromArray");
+        String[] from;
+        switch (position){
+            case MetaData.CONTENT_POSITION_READING:
+                from = new String[] {MetaData.KEY_BOOK_NAME, MetaData.KEY_AUTHOR,
+                        MetaData.KEY_TIMER_SECONDS, MetaData.KEY_TIME_STRING, MetaData.KEY_READ_PAGE,
+                        MetaData.KEY_TOTAL_PAGE, "" + MetaData.KEY_PERCENT };
+                break;
+            case MetaData.CONTENT_POSITION_WANT:
+                from = new String[] {MetaData.KEY_BOOK_NAME, MetaData.KEY_AUTHOR,
+                        ""+ MetaData.KEY_TOTAL_PAGE};
+                break;
+            case MetaData.CONTENT_POSITION_FINISHED:
+                from = new String[] {MetaData.KEY_BOOK_NAME, MetaData.KEY_AUTHOR,
+                        MetaData.KEY_TIME_STRING, "" + MetaData.KEY_TOTAL_PAGE};
+                break;
+            default:
+                throw new IllegalArgumentException(getString(R.string.illegal_argument));
+        }
+        Log.d(TAG, "leave getFromArray");
+        return from;
+    }
+
+    private int[] getToArray(int position){
+        Log.d(TAG, "enter getToArray");
+        int[] to;
+        switch (position) {
+            case MetaData.CONTENT_POSITION_READING:
+                to = new int[] {R.id.bookNameText, R.id.authorText, R.id.timerText,
+                        R.id.totalTimeText, R.id.readPageText, R.id.totalPageText, R.id.percentText};
+                break;
+            case MetaData.CONTENT_POSITION_WANT:
+                to = new int[] {R.id.bookNameText, R.id.authorText, R.id.totalPageText};
+                break;
+            case MetaData.CONTENT_POSITION_FINISHED:
+                to = new int[] {R.id.bookNameText, R.id.authorText,
+                        R.id.totalTimeText, R.id.totalPageText};
+                break;
+            default:
+                throw new IllegalArgumentException(getString(R.string.illegal_argument));
+        }
+        Log.d(TAG, "leave getToArray");
+        return to;
+    }
+
+    private int getLayout(int position){
+        Log.d(TAG, "enter getLayout");
+        int layout;
+        switch (position) {
+            case MetaData.CONTENT_POSITION_READING:
+                layout = R.layout.listitem_reading;
+                break;
+            case MetaData.CONTENT_POSITION_WANT:
+                layout = R.layout.listitem_want;
+                break;
+            case MetaData.CONTENT_POSITION_FINISHED:
+                layout = R.layout.listitem_finished;
+                break;
+            default:
+                throw new IllegalArgumentException(getString(R.string.illegal_argument));
+        }
+        Log.d(TAG, "leave getLayout");
+        return layout;
     }
 
     @Override
@@ -71,84 +135,7 @@ public  class ContentFragment extends LoaderFragment {
         Log.d(TAG, "enter onAttach");
         super.onAttach(activity);
         ((MainActivity) activity).onSectionAttached(
-            getArguments().getInt(ARG_SECTION_NUMBER));
+                getArguments().getInt(MetaData.ARG_POSITION));
         Log.d(TAG, "leave onAttach");
-    }
-
-
-    //将数据库中的书籍信息显示到ListView中。
-    void displayListView(int position) {
-        Log.d(TAG, "enter displayListView");
-        String[] columns;
-        int[] to;
-        int layout;
-
-        switch (position) {
-        case MetaData.CONTENT_POSITION_READING:
-            columns = new String[] {
-                MetaData.KEY_BOOK_NAME,
-                MetaData.KEY_AUTHOR,
-                MetaData.KEY_TIMER_SECONDS,
-                MetaData.KEY_TIME_STRING,
-                MetaData.KEY_READ_PAGE,
-                MetaData.KEY_TOTAL_PAGE,
-                "" + MetaData.KEY_PERCENT
-            };
-
-            to = new int[] {
-                R.id.bookNameText,
-                R.id.authorText,
-                R.id.timerText,
-                R.id.totalTimeText,
-                R.id.readPageText,
-                R.id.totalPageText,
-                R.id.percentText
-            };
-            layout = R.layout.listitem_reading;
-            break;
-        case MetaData.CONTENT_POSITION_WANT:
-            columns = new String[] {
-                MetaData.KEY_BOOK_NAME,
-                MetaData.KEY_AUTHOR,
-                ""+ MetaData.KEY_TOTAL_PAGE
-            };
-            to = new int[] {
-                R.id.bookNameText,
-                R.id.authorText,
-                R.id.totalPageText
-            };
-            layout = R.layout.listitem_want;
-            break;
-        case MetaData.CONTENT_POSITION_FINISHED:
-            columns = new String[] {
-                MetaData.KEY_BOOK_NAME,
-                MetaData.KEY_AUTHOR,
-                MetaData.KEY_TIME_STRING,
-                "" + MetaData.KEY_TOTAL_PAGE
-            };
-            to = new int[] {
-                R.id.bookNameText,
-                R.id.authorText,
-                R.id.totalTimeText,
-                R.id.totalPageText
-            };
-            layout = R.layout.listitem_finished;
-            break;
-        default:
-            throw new IllegalArgumentException(getString(R.string.illegal_argument));
-        }
-
-        mDataAdapter = new BookInfoAdapter(
-                getActivity(),
-                (MainActivity)getActivity(),
-                layout,
-                columns,
-                to,
-                position);
-
-        // Assign adapter to ListView
-        mBookList.setAdapter(mDataAdapter);
-
-        Log.d(TAG, "leave displayListView");
     }
 }

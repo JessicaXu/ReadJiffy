@@ -27,8 +27,8 @@ consume the full space available. -->
         android:layout_width="@dimen/navigation_drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:name="com.jessicaxu.ReadJiffy.app.ui.NavigationDrawerFragment"
-        tools:layout="@layout/fragment_navigation_drawer" />
+        android:name="com.jessicaxu.ReadJiffy.app.ui.DrawerFragment"
+        tools:layout="@layout/fragment_drawer" />
 
 </android.support.v4.widget.DrawerLayout>
 <!-- From: file:/E:/code/Android/ReadJiffy/app/src/main/res/layout/activity_main.xml -->

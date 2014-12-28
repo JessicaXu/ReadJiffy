@@ -229,7 +229,7 @@
     <string name="total_time">总用时:</string>
     <string name="total_time_info">您阅读的总时间是：</string>
     <string name="welcome_info">悦读时刻，记录您阅读路上的每一步</string>
-    <string name="zero_info">0</string>
+    <string name="zero_info">0 小时 0 分钟</string>
     <!-- From: file:/E:/code/Android/ReadJiffy/app/src/main/res/values/themes_customblue.xml -->
     <eat-comment/>
     <style name="CustomBlue" parent="@style/_CustomBlue"/>

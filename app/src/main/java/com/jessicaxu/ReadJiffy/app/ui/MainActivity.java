@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.app.FragmentManager;
@@ -19,25 +20,27 @@ import android.widget.Button;
 import com.jessicaxu.ReadJiffy.app.R;
 import com.jessicaxu.ReadJiffy.app.data.*;
 import com.jessicaxu.ReadJiffy.app.background.*;
+import com.jessicaxu.ReadJiffy.app.global.MetaData;
 
 
 public class MainActivity extends ActionBarActivity
     implements DrawerFragment.NavigationDrawerCallbacks,
-               BookInfoAdapter.CursorAdapterCallbacks{
+               BookInfoAdapter.CursorAdapterCallbacks,
+               DatabaseTask.ResultTask{
     //Fragment managing the behaviors, interactions and presentation of the navigation drawer.
     public DrawerFragment mDrawerFragment;
 
     //Used to store the last screen title.
     private CharSequence mTitle;
     private int mContentPosition = MetaData.CONTENT_POSITION_INIT;
-
+    private int mIncreaseMinutes;
     private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "enter onCreate");
 
-        setStrictMode(true);
+        setStrictMode(false);
 
         Thread.setDefaultUncaughtExceptionHandler (new Thread.UncaughtExceptionHandler() {
             @Override
@@ -49,14 +52,20 @@ public class MainActivity extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mDrawerFragment = (DrawerFragment)
-                                    getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+        DatabaseTask.mResultTask = this;
+        BookInfoAdapter.mCallbacks = this;
+
+        mDrawerFragment = (DrawerFragment)getSupportFragmentManager().
+                findFragmentById(R.id.navigation_drawer);
+
         mTitle = getTitle();
 
         // Set up the drawer.
         mDrawerFragment.setUp(
             R.id.navigation_drawer,
             (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        handleStatisticInfo(new StatisticInfo(), MetaData.QUERY_AND_INSERT);
 
         Log.d(TAG, "leave onCreate");
     }
@@ -221,43 +230,21 @@ public class MainActivity extends ActionBarActivity
 
     public void addBookInfo(BookInfo bookInfo){
         Log.d(TAG, "enter addBookInfo");
-        TaskParam taskParam = new TaskParam(
+        mIncreaseMinutes = bookInfo.mMinutes + bookInfo.mHours * 60;
+        TaskParam bookInfoParam = new TaskParam(
                 bookInfo.setContentValues(),
-                MetaData.OPERATION_INSERT,
+                MetaData.INSERT,
                 getTableName(mContentPosition),
-                this,
                 MetaData.KEY_BOOK_NAME,
                 bookInfo.mBookName,
                 null);
-        DatabaseTask databaseTask = new DatabaseTask();
-        databaseTask.execute(taskParam);
+        DatabaseTask bookInfoTask = new DatabaseTask();
+        bookInfoTask.execute(bookInfoParam);
 
-        /*
         if((mContentPosition == MetaData.CONTENT_POSITION_FINISHED) ||
                 (mContentPosition == MetaData.CONTENT_POSITION_READING)){
-            String[] categoryName = {MetaData.STATISTIC_TOTAL};
-            Cursor cursor = getContentResolver().query(
-                    BookCP.getContentUri(MetaData.SQLite_TABLE_STATISTIC),
-                    null,
-                    MetaData.KEY_CATEGORY_NAME + "= ?",
-                    categoryName,
-                    MetaData.KEY_CATEGORY_NAME);
-
-            StatisticInfo statisticInfo = BookCP.getStatisticInfo(cursor);
-            cursor.close();
-            statisticInfo.mStatisticMinutes += bookInfo.mMinutes + bookInfo.mHours * 60;
-            TaskParam statisticParam = new TaskParam(
-                    statisticInfo.setContentValues(),
-                    MetaData.OPERATION_UPDATE,
-                    getTableName(mContentPosition),
-                    this,
-                    MetaData.KEY_CATEGORY_NAME,
-                    statisticInfo.mCategoryName,
-                    null);
-            DatabaseTask statisticTask = new DatabaseTask();
-            statisticTask.execute(statisticParam);
+            handleStatisticInfo(new StatisticInfo(), MetaData.QUERY_AND_UPDATE);
         }
-        */
 
         Log.d(TAG, "leave addBookInfo");
     }
@@ -327,5 +314,46 @@ public class MainActivity extends ActionBarActivity
 
         Log.d(TAG, "leave getTableName");
         return rv;
+    }
+
+    /*
+     实现DatabaseTask中的接口
+     */
+    public void doResultTask(Cursor cursor, int operation){
+        switch (operation){
+            case MetaData.QUERY_AND_INSERT:
+                if(!cursor.moveToFirst()){
+                    TaskParam insertParam = new TaskParam(
+                            new StatisticInfo().setContentValues(),
+                            MetaData.INSERT,
+                            MetaData.SQLite_TABLE_STATISTIC,
+                            null,
+                            null,
+                            null);
+                    DatabaseTask insertTask = new DatabaseTask();
+                    insertTask.execute(insertParam);
+                }
+                break;
+            case MetaData.QUERY_AND_UPDATE:
+                StatisticInfo statisticInfo = BookCP.getStatisticInfo(cursor);
+                statisticInfo.mStatisticMinutes += mIncreaseMinutes;
+                statisticInfo.mTimeString = statisticInfo.getTimeString();
+                handleStatisticInfo(statisticInfo, MetaData.UPDATE);
+                break;
+            default:
+                throw new IllegalArgumentException(getString(R.string.illegal_argument));
+        }
+    }
+
+    private void handleStatisticInfo(StatisticInfo statisticInfo, int operation){
+        TaskParam statisticInfoParam = new TaskParam(
+                statisticInfo.setContentValues(),
+                operation,
+                MetaData.SQLite_TABLE_STATISTIC,
+                MetaData.KEY_CATEGORY_NAME,
+                MetaData.STATISTIC_TOTAL,
+                MetaData.KEY_CATEGORY_NAME);
+        DatabaseTask statisticInfoTask = new DatabaseTask();
+        statisticInfoTask.execute(statisticInfoParam);
     }
 }

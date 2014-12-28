@@ -12,6 +12,8 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.jessicaxu.ReadJiffy.app.global.MetaData;
+
 //import java.util.HashMap;
 
 /**
@@ -389,8 +391,9 @@ public class BookCP extends ContentProvider {
                     (MetaData.KEY_CATEGORY_NAME));
             statisticInfo.mStatisticMinutes = cursor.getInt(cursor.getColumnIndex
                     (MetaData.KEY_STATISTIC_MINUTES));
+            statisticInfo.mTimeString = cursor.getString(cursor.getColumnIndex(
+                    MetaData.KEY_TIME_STRING));
         }
-
 
         Log.d(TAG, "leave getStatisticInfo");
         return statisticInfo;

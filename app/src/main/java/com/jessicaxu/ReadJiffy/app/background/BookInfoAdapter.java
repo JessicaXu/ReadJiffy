@@ -16,7 +16,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -24,6 +23,8 @@ import android.widget.Toast;
 
 import com.jessicaxu.ReadJiffy.app.R;
 import com.jessicaxu.ReadJiffy.app.data.*;
+import com.jessicaxu.ReadJiffy.app.global.CustomApplication;
+import com.jessicaxu.ReadJiffy.app.global.MetaData;
 import com.jessicaxu.ReadJiffy.app.ui.*;
 
 import java.lang.reflect.Field;
@@ -33,20 +34,20 @@ import java.util.Calendar;
 //ADD THIS CLASS BY JESSICAXU, CUSTOM MY OWN ListView.
 public class BookInfoAdapter extends DataAdapter {
     private boolean mIsTiming = false;
-    private MainActivity mMainActivity;
+    private Context mContext = CustomApplication.getContext();
     private Calendar mStartCalendar;
     private int mContentPosition;
-    private CursorAdapterCallbacks mCallbacks = null;
+    public static CursorAdapterCallbacks mCallbacks = null;
     private static final String TAG = "BookInfoAdapter";
+    private MainActivity mActivity;
     /*
      *构造函数
      */
-    public BookInfoAdapter(Context context, MainActivity mainActivity,
-                           int layout, String[] from, int[] to, int contentPosition){
+    public BookInfoAdapter(Context context, int layout, String[] from,
+                           int[] to, int contentPosition){
         super(context, layout, null, from, to, 0);
-        mMainActivity = mainActivity;
         mContentPosition = contentPosition;
-        mCallbacks = mMainActivity;
+        mActivity = (MainActivity)context;
     }
 
     /*
@@ -57,6 +58,17 @@ public class BookInfoAdapter extends DataAdapter {
         Log.d(TAG, "enter getView");
         //get reference to the row
         View itemView = super.getView(position, convertView, parent);
+
+        //自定义Item颜色
+        setItemColor(position, itemView);
+
+        //设置点击响应函数
+        setClickListener(itemView);
+        Log.d(TAG, "leave getView");
+        return itemView;
+    }
+
+    private void setClickListener(View itemView){
         switch (mContentPosition){
             case MetaData.CONTENT_POSITION_READING:
                 setReadingClickListener(itemView);
@@ -68,13 +80,8 @@ public class BookInfoAdapter extends DataAdapter {
                 setFinishedListener(itemView);
                 break;
             default:
-                throw new IllegalArgumentException(mMainActivity.getString(R.string.illegal_argument));
+                throw new IllegalArgumentException(mContext.getString(R.string.illegal_argument));
         }
-
-        //自定义Item颜色
-        setItemColor(position, itemView);
-        Log.d(TAG, "leave getView");
-        return itemView;
     }
 
     /*
@@ -159,13 +166,13 @@ public class BookInfoAdapter extends DataAdapter {
             public void onClick(View v) {
                 //如果当前的条目正在进行计时，先停止计时。防止出现计时查找不到相应数据的异常。
                 TextView timerView = (TextView)itemView.findViewById(R.id.timerText);
-                if(!timerView.getText().toString().equals(mMainActivity.getString(R.string.init_time))){
+                if(!timerView.getText().toString().equals(mContext.getString(R.string.init_time))){
                     stopTimer();
                 }
 
-                final CustomDialog customDialog = new CustomDialog(mMainActivity);
+                final CustomDialog customDialog = new CustomDialog(mActivity);
                 customDialog.buildDialog(R.layout.dialog_alert,
-                        mMainActivity.getString(R.string.delete));
+                        mContext.getString(R.string.delete));
 
                 final String bookName = getBookName(itemView);
                 Button positiveButton = customDialog.mDialog.getButton(AlertDialog.BUTTON_POSITIVE);
@@ -197,12 +204,11 @@ public class BookInfoAdapter extends DataAdapter {
         Log.d(TAG, "enter deleteBookInfo");
         TaskParam taskParam = new TaskParam(
                 bookInfo.setContentValues(),
-                MetaData.OPERATION_DELETE,
+                MetaData.DELETE,
                 tableName,
-                mMainActivity,
                 MetaData.KEY_BOOK_NAME,
                 bookInfo.mBookName,
-                MetaData.KEY_BOOK_NAME);
+                null);
         DatabaseTask tct = new DatabaseTask();
         tct.execute(taskParam);
         Log.d(TAG, "leave deleteBookInfo");
@@ -216,7 +222,7 @@ public class BookInfoAdapter extends DataAdapter {
         Log.d(TAG, "enter isTiming");
         BookInfo bookInfo = getViewInfo(itemView);
         boolean rv;
-        if((!bookInfo.mTimerSeconds.equals(mMainActivity.getString(R.string.init_time)))
+        if((!bookInfo.mTimerSeconds.equals(mContext.getString(R.string.init_time)))
                 || mIsTiming){
             rv = true;
         }
@@ -240,8 +246,8 @@ public class BookInfoAdapter extends DataAdapter {
         }
         mCallbacks.startTimerService(name, tableName, period);
 
-        Toast.makeText(mMainActivity.getApplicationContext(),
-                mMainActivity.getString(R.string.start_timer),
+        Toast.makeText(mContext,
+                mContext.getString(R.string.start_timer),
                 Toast.LENGTH_SHORT).show();
 
         Log.d(TAG, "leave startTimer");
@@ -256,8 +262,8 @@ public class BookInfoAdapter extends DataAdapter {
         mCallbacks.stopTimerService();
         mIsTiming = false;
 
-        Toast.makeText(mMainActivity.getApplicationContext(),
-                mMainActivity.getString(R.string.stop_timer),
+        Toast.makeText(mContext,
+                mContext.getString(R.string.stop_timer),
                 Toast.LENGTH_SHORT).show();
         Log.d(TAG, "leave stopTimer");
     }
@@ -360,7 +366,7 @@ public class BookInfoAdapter extends DataAdapter {
                 bookInfo.mHours = bookInfo.getHoursNumber();
                 break;
             default:
-                throw new IllegalArgumentException(mMainActivity.getString(R.string.illegal_argument));
+                throw new IllegalArgumentException(mContext.getString(R.string.illegal_argument));
         }
         Log.d(TAG, "leave getViewInfo");
         return bookInfo;
@@ -377,10 +383,10 @@ public class BookInfoAdapter extends DataAdapter {
             public void onClick(View v) {
                 //获取到当前view所在的ListView的Item的对应信息,保存在bookInfo中。
                 final BookInfo bookInfo = getViewInfo(itemView);
-                final CustomDialog customDialog = new CustomDialog(mMainActivity);
+                final CustomDialog customDialog = new CustomDialog(mActivity);
                 customDialog.buildDialog(
                         R.layout.dialog_set_percent,
-                        mMainActivity.getString(R.string.read_page_title));
+                        mContext.getString(R.string.read_page_title));
                 final Button positiveButton = customDialog.mDialog.
                         getButton(AlertDialog.BUTTON_POSITIVE);
                 setPercentDialogButtonListener(positiveButton, customDialog, bookInfo);
@@ -403,9 +409,9 @@ public class BookInfoAdapter extends DataAdapter {
                 int readPages = Integer.parseInt(readView.getText().toString());
 
                 if(readPages == 0) {
-                    readView.setError(mMainActivity.getString(R.string.read_page_error));
+                    readView.setError(mContext.getString(R.string.read_page_error));
                 } else if(readPages > bookInfo.mTotalPage) {
-                    readView.setError(mMainActivity.getString(R.string.read_page_suggestion) +
+                    readView.setError(mContext.getString(R.string.read_page_suggestion) +
                             ":" + bookInfo.mTotalPage);
                 } else if(readPages == bookInfo.mTotalPage) {
                     switchStatusToFinish(bookInfo);
@@ -433,9 +439,8 @@ public class BookInfoAdapter extends DataAdapter {
 
         TaskParam taskParam1 = new TaskParam(
                 tempBookInfo.setContentValues(),
-                MetaData.OPERATION_INSERT,
+                MetaData.INSERT,
                 MetaData.SQLite_TABLE_FINISHED,
-                mMainActivity,
                 MetaData.KEY_BOOK_NAME,
                 tempBookInfo.mBookName,
                 null);
@@ -444,16 +449,15 @@ public class BookInfoAdapter extends DataAdapter {
 
         TaskParam taskParam2 = new TaskParam(
                 bookInfo.setContentValues(),
-                MetaData.OPERATION_DELETE,
+                MetaData.DELETE,
                 MetaData.SQLite_TABLE_READING,
-                mMainActivity,
                 MetaData.KEY_BOOK_NAME,
                 bookInfo.mBookName,
                 null);
         DatabaseTask tct2 = new DatabaseTask();
         tct2.execute(taskParam2);
 
-        Toast.makeText(mMainActivity.getApplicationContext(),
+        Toast.makeText(mContext,
                 R.string.switch_to_reading,
                 Toast.LENGTH_SHORT).show();
         //mMainActivity.mNavigationDrawerFragment.selectItem(MetaData.DRAWER_POSITION_FINISHED);
@@ -469,9 +473,8 @@ public class BookInfoAdapter extends DataAdapter {
         bookInfo.mPercent = bookInfo.getPercent();
         TaskParam taskParam = new TaskParam(
                 bookInfo.setContentValues(),
-                MetaData.OPERATION_UPDATE,
+                MetaData.UPDATE,
                 MetaData.SQLite_TABLE_READING,
-                mMainActivity,
                 MetaData.KEY_BOOK_NAME,
                 bookInfo.mBookName,
                 null);
@@ -490,7 +493,7 @@ public class BookInfoAdapter extends DataAdapter {
             @Override
             public void onClick(View v) {
                 // Create a PopupMenu, giving it the clicked view for an anchor
-                PopupMenu popup = new PopupMenu(mMainActivity, menuButton);
+                PopupMenu popup = new PopupMenu(mContext, menuButton);
 
                 if(isTiming(itemView)) {
                     //显示包含“stop, stop at, edit, edit running time”的菜单
@@ -527,7 +530,7 @@ public class BookInfoAdapter extends DataAdapter {
                         break;
                     default:
                         throw new IllegalArgumentException(
-                                mMainActivity.getString(R.string.illegal_argument));
+                                mContext.getString(R.string.illegal_argument));
                 }
                 return true;
             }
@@ -560,7 +563,7 @@ public class BookInfoAdapter extends DataAdapter {
                         break;
                     default:
                         throw new IllegalArgumentException(
-                                mMainActivity.getString(R.string.illegal_argument));
+                                mContext.getString(R.string.illegal_argument));
                 }
                 return false;
             }
@@ -576,12 +579,12 @@ public class BookInfoAdapter extends DataAdapter {
         Log.d(TAG, "enter onClickSetTime");
         //获取到当前view所在的ListView的Item的对应信息,保存在bookInfo中。
         final BookInfo bookInfo = getViewInfo(itemView);
-        final CustomDialog customDialog = new CustomDialog(mMainActivity);
+        final CustomDialog customDialog = new CustomDialog(mActivity);
         customDialog.buildDialog(
                 R.layout.dialog_set_time,
                 setDialogTitle(itemView));
         setViewData(customDialog.mDialogView);
-        setSuggestionText(customDialog.mDialogView, mMainActivity.getString(R.string.init));
+        setSuggestionText(customDialog.mDialogView, mContext.getString(R.string.init));
         TimePicker timePicker = (TimePicker)customDialog.mDialogView.findViewById(R.id.timePicker);
         setTimePickerDivider(timePicker);
 
@@ -618,10 +621,10 @@ public class BookInfoAdapter extends DataAdapter {
             @Override
             public void onClick(View v) {
                 dateTextView.setBackgroundColor(MetaData.READ_JIFFY_HIGHLIGHT);
-                final CustomDialog datePickerDialog = new CustomDialog(mMainActivity);
+                final CustomDialog datePickerDialog = new CustomDialog(mActivity);
                 datePickerDialog.buildDialog(
                         R.layout.dialog_set_date,
-                        mMainActivity.getString(R.string.set_date));
+                        mContext.getString(R.string.set_date));
 
                 final TextView dateSuggestionView = (TextView) datePickerDialog.mDialogView.
                         findViewById(R.id.dateSuggestion);
@@ -643,9 +646,9 @@ public class BookInfoAdapter extends DataAdapter {
                                          Calendar calendar,
                                          TextView dateSuggestionView) {
         Log.d(TAG, "enter setDatePickerAppearance");
-        SimpleDateFormat sdf = new SimpleDateFormat(mMainActivity.getString(R.string.date_format));
+        SimpleDateFormat sdf = new SimpleDateFormat(mContext.getString(R.string.date_format));
 
-        dateSuggestionView.setText(mMainActivity.getString(R.string.date_suggestion) +
+        dateSuggestionView.setText(mContext.getString(R.string.date_suggestion) +
                 sdf.format(calendar.getTime()));
         dateSuggestionView.setTextColor(MetaData.READ_JIFFY_HIGHLIGHT);
         DatePicker datePicker = (DatePicker)datePickerDialog.mDialogView.
@@ -673,7 +676,7 @@ public class BookInfoAdapter extends DataAdapter {
                 calendar.set(Calendar.DAY_OF_MONTH, datePicker.getDayOfMonth());
                 if (isDateLegal(calendar)) {
                     SimpleDateFormat sdf = new SimpleDateFormat
-                            (mMainActivity.getString(R.string.date_format));
+                            (mContext.getString(R.string.date_format));
                     dateTextView.setText(sdf.format(calendar.getTime()));
                     datePickerDialog.mDialog.dismiss();
                 } else {
@@ -731,9 +734,8 @@ public class BookInfoAdapter extends DataAdapter {
         bookInfo.mTimeString = bookInfo.getTimeString();
         TaskParam taskParam = new TaskParam(
                 bookInfo.setContentValues(),
-                MetaData.OPERATION_UPDATE,
+                MetaData.UPDATE,
                 MetaData.SQLite_TABLE_READING,
-                mMainActivity,
                 MetaData.KEY_BOOK_NAME,
                 bookInfo.mBookName,
                 null);
@@ -753,9 +755,8 @@ public class BookInfoAdapter extends DataAdapter {
         bookInfo.mTimeString = bookInfo.getTimeString();
         TaskParam taskParam = new TaskParam(
                 bookInfo.setContentValues(),
-                MetaData.OPERATION_UPDATE,
+                MetaData.UPDATE,
                 MetaData.SQLite_TABLE_READING,
-                mMainActivity,
                 MetaData.KEY_BOOK_NAME,
                 bookInfo.mBookName,
                 null);
@@ -775,7 +776,7 @@ public class BookInfoAdapter extends DataAdapter {
                 field.setAccessible(true);
                 try {
                     field.set(picker,
-                            mMainActivity.getResources().getDrawable(R.drawable.dialog_divider));
+                            mContext.getResources().getDrawable(R.drawable.dialog_divider));
                     System.out.println("set divider color!");
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -864,7 +865,7 @@ public class BookInfoAdapter extends DataAdapter {
     private void setViewData(View dialogView) {
         Log.d(TAG, "enter setViewData");
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat(mMainActivity.getString(R.string.date_format));
+        SimpleDateFormat sdf = new SimpleDateFormat(mContext.getString(R.string.date_format));
         TextView dateText = (TextView)dialogView.findViewById(R.id.dateText);
         dateText.setText( sdf.format(calendar.getTime()));
 
@@ -883,11 +884,11 @@ public class BookInfoAdapter extends DataAdapter {
         final TextView suggestionText =
                 (TextView)dialogView.findViewById(R.id.suggestion);
 
-        if(str.equals(mMainActivity.getString(R.string.init))) {
+        if(str.equals(mContext.getString(R.string.init))) {
             Calendar curCalendar = Calendar.getInstance();
 
-            SimpleDateFormat sdf = new SimpleDateFormat(mMainActivity.getString(R.string.time_format));
-            suggestionText.setText(mMainActivity.getString(R.string.time_suggestion)+
+            SimpleDateFormat sdf = new SimpleDateFormat(mContext.getString(R.string.time_format));
+            suggestionText.setText(mContext.getString(R.string.time_suggestion)+
                     sdf.format(curCalendar.getTime()));
             suggestionText.setTextColor(MetaData.READ_JIFFY_HIGHLIGHT);
         } else {
@@ -904,9 +905,9 @@ public class BookInfoAdapter extends DataAdapter {
         Log.d(TAG, "enter setDialogTitle");
         String rv;
         if(!isTiming(itemView)) {
-            rv = mMainActivity.getString(R.string.start_at);
+            rv = mContext.getString(R.string.start_at);
         } else {
-            rv = mMainActivity.getString(R.string.stop_at);
+            rv = mContext.getString(R.string.stop_at);
         }
         Log.d(TAG, "leave setDialogTitle");
         return rv;
@@ -931,10 +932,10 @@ public class BookInfoAdapter extends DataAdapter {
         Log.d(TAG, "enter onClickAdjustTime");
         final BookInfo bookInfo = getViewInfo(itemView);
 
-        final CustomDialog customDialog = new CustomDialog(mMainActivity);
+        final CustomDialog customDialog = new CustomDialog(mActivity);
         customDialog.buildDialog(
                 R.layout.dialog_adjust_time,
-                mMainActivity.getString(R.string.adjust_time));
+                mContext.getString(R.string.adjust_time));
         setSpinnerAppearance(customDialog);
 
         final Button positiveButton = customDialog.mDialog.getButton(AlertDialog.BUTTON_POSITIVE);
@@ -949,7 +950,7 @@ public class BookInfoAdapter extends DataAdapter {
         Log.d(TAG, "enter setSpinnerAppearance");
         //设置"+"和"-"的下拉菜单
         Spinner spinner = (Spinner) customDialog.mDialogView.findViewById(R.id.operationSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(mMainActivity,
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(mContext,
                 R.array.operationSpinner, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -972,7 +973,7 @@ public class BookInfoAdapter extends DataAdapter {
 
                     if ((operation.equals("-")) &&
                             (period > (bookInfo.mMinutes + bookInfo.mHours * 60))) {
-                        String suggestion = mMainActivity.getString(R.string.adjust_suggestion) +
+                        String suggestion = mContext.getString(R.string.adjust_suggestion) +
                                 bookInfo.mTimeString;
                         TextView suggestionText = (TextView) customDialog.mDialogView.
                                 findViewById(R.id.suggestion);
@@ -986,7 +987,7 @@ public class BookInfoAdapter extends DataAdapter {
                             updateTimeIncrease(period, bookInfo);
                         } else {
                             throw new IllegalArgumentException(
-                                    mMainActivity.getString(R.string.illegal_argument));
+                                    mContext.getString(R.string.illegal_argument));
                         }
                         customDialog.mDialog.dismiss();
                     }
@@ -1032,10 +1033,10 @@ public class BookInfoAdapter extends DataAdapter {
         Calendar setCalendar = getTimeDialogInfo(dialogView, calendar);
         Calendar curCalendar = Calendar.getInstance();
         if(setCalendar.after(curCalendar)) {
-            return mMainActivity.getString(R.string.time_alarm);
+            return mContext.getString(R.string.time_alarm);
         }
         if(isTiming(itemView) && (setCalendar.before(mStartCalendar))) {
-            return mMainActivity.getString(R.string.period_alarm);
+            return mContext.getString(R.string.period_alarm);
         }
         if(!isTiming(itemView)) {
             mStartCalendar = setCalendar;
@@ -1079,9 +1080,8 @@ public class BookInfoAdapter extends DataAdapter {
                 tempBookInfo.mTimeString = tempBookInfo.getTimeString();
                 TaskParam taskParam1 = new TaskParam(
                         tempBookInfo.setContentValues(),
-                        MetaData.OPERATION_INSERT,
+                        MetaData.INSERT,
                         MetaData.SQLite_TABLE_READING,
-                        mMainActivity,
                         MetaData.KEY_BOOK_NAME,
                         tempBookInfo.mBookName,
                         null);
@@ -1090,9 +1090,8 @@ public class BookInfoAdapter extends DataAdapter {
 
                 TaskParam taskParam2 = new TaskParam(
                         bookInfo.setContentValues(),
-                        MetaData.OPERATION_DELETE,
+                        MetaData.DELETE,
                         MetaData.SQLite_TABLE_WANT,
-                        mMainActivity,
                         MetaData.KEY_BOOK_NAME,
                         bookInfo.mBookName,
                         null);

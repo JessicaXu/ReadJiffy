@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.jessicaxu.ReadJiffy.app.R;
+import com.jessicaxu.ReadJiffy.app.global.MetaData;
 
 import java.text.NumberFormat;
 

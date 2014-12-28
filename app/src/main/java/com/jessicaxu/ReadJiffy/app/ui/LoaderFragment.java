@@ -10,7 +10,7 @@ import android.util.Log;
 
 import com.jessicaxu.ReadJiffy.app.background.DataAdapter;
 import com.jessicaxu.ReadJiffy.app.data.BookCP;
-import com.jessicaxu.ReadJiffy.app.data.MetaData;
+import com.jessicaxu.ReadJiffy.app.global.MetaData;
 
 
 public class LoaderFragment extends Fragment
@@ -49,9 +49,11 @@ public class LoaderFragment extends Fragment
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         Log.d(TAG, "enter onCreateLoader");
         CursorLoader cursorLoader = null;
-        if(id == MetaData.BOOKINFO_LOADER) {
+        if((id == MetaData.BOOKINFO_LOADER) ||
+                (id == MetaData.STATISTICINFO_LOADER)){
             //从参数Bundle中获得数据库表的名称
-            String tableName = args.getString(MetaData.ARG_TABLE_NAME);
+            int position = args.getInt(MetaData.ARG_POSITION);
+            String tableName = MainActivity.getTableName(position);
 
             /**
              * URI: The URI for the content to retrieve.内容的URI.

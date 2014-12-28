@@ -12,7 +12,7 @@ import android.util.Log;
 import com.jessicaxu.ReadJiffy.app.R;
 import com.jessicaxu.ReadJiffy.app.data.BookCP;
 import com.jessicaxu.ReadJiffy.app.data.BookInfo;
-import com.jessicaxu.ReadJiffy.app.data.MetaData;
+import com.jessicaxu.ReadJiffy.app.global.MetaData;
 import com.jessicaxu.ReadJiffy.app.data.StatisticInfo;
 
 import java.util.Timer;
@@ -131,11 +131,11 @@ public class TimerService extends Service {
     * 将计时数据更新到BookInfo中，用来稍后更新数据库的记录
     */
     private void updateTimeInfo(int action) {
-        Log.d(TAG, "enter updateBookInfo");
+        Log.d(TAG, "enter updateTimeInfo");
         switch (action){
             case MetaData.ACTION_UPDATE_TOTAL:
                 updateBookInfo();
-                //updateStatisticInfo();
+                updateStatisticInfo(1);
                 break;
             case MetaData.ACTION_UPDATE_SECONDS:
                 mBookInfo.mTimerSeconds = mBookInfo.getSecondsString(mPassedSeconds);
@@ -153,17 +153,20 @@ public class TimerService extends Service {
                 mBookInfo.setContentValues(),
             MetaData.KEY_BOOK_NAME + " = ?",
             bookName);
-        Log.d(TAG, "leave updateBookInfo");
+        Log.d(TAG, "leave updateTimeInfo");
     }
 
     private void updateBookInfo(){
+        Log.d(TAG, "enter updateBookInfo");
         int totalMinutes = mBookInfo.mMinutes + mBookInfo.mHours * 60 + 1;
         mBookInfo.mMinutes = totalMinutes % 60;
         mBookInfo.mHours = totalMinutes / 60;
         mBookInfo.mTimeString = mBookInfo.getTimeString();
+        Log.d(TAG, "leave updateBookInfo");
     }
 
-    private void updateStatisticInfo(){
+    private void updateStatisticInfo(int increase){
+        Log.d(TAG, "enter updateStatisticInfo");
         String[] categoryName = {MetaData.STATISTIC_TOTAL};
         Cursor cursor = getContentResolver().query(
                 BookCP.getContentUri(MetaData.SQLite_TABLE_STATISTIC),
@@ -175,12 +178,14 @@ public class TimerService extends Service {
         StatisticInfo statisticInfo = BookCP.getStatisticInfo(cursor);
         cursor.close();
 
-        statisticInfo.mStatisticMinutes += 1;
+        statisticInfo.mStatisticMinutes += increase;
+        statisticInfo.mTimeString = statisticInfo.getTimeString();
         getContentResolver().update(
                 BookCP.getContentUri(MetaData.SQLite_TABLE_STATISTIC),
                 statisticInfo.setContentValues(),
                 MetaData.KEY_CATEGORY_NAME + " = ?",
                 categoryName);
+        Log.d(TAG, "leave updateStatisticInfo");
     }
 
 

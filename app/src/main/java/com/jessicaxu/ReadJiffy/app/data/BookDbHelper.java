@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.jessicaxu.ReadJiffy.app.global.MetaData;
+
 class BookDbHelper extends SQLiteOpenHelper {
     private static final String TAG = "BookDbHelper";
 
@@ -15,6 +17,7 @@ class BookDbHelper extends SQLiteOpenHelper {
                     MetaData.KEY_ROW_ID + " integer PRIMARY KEY autoincrement," +
                     MetaData.KEY_CATEGORY_NAME + "," +
                     MetaData.KEY_STATISTIC_MINUTES + "," +
+                    MetaData.KEY_TIME_STRING + "," +
                     " UNIQUE (" + MetaData.KEY_CATEGORY_NAME +"));";
 
     //创建“在读”数据库表
@@ -83,6 +86,7 @@ class BookDbHelper extends SQLiteOpenHelper {
 
         Log.w(TAG, DATABASE_CREATE_WANT);
         db.execSQL(DATABASE_CREATE_WANT);
+
         Log.d(TAG, "leave onCreate");
     }
 
@@ -105,4 +109,5 @@ class BookDbHelper extends SQLiteOpenHelper {
         onCreate(db);
         Log.d(TAG, "leave onUpgrade");
     }
+
 }

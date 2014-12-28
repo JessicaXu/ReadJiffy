@@ -96,7 +96,7 @@
     <!--主页显示的信息-->
     <string name="welcome_info">悦读时刻，记录您阅读路上的每一步</string>
     <string name="total_time_info">您阅读的总时间是：</string>
-    <string name="zero_info">0</string>
+    <string name="zero_info">0 小时 0 分钟</string>
     <string name="total_books_info">您已阅读完</string>
     <string name="book_text">本书</string>
     <string name="total_page_info">加起来共</string>

@@ -23,7 +23,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.jessicaxu.ReadJiffy.app.R;
-import com.jessicaxu.ReadJiffy.app.data.MetaData;
+import com.jessicaxu.ReadJiffy.app.global.MetaData;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
@@ -97,7 +97,7 @@ public class DrawerFragment extends Fragment {
                              Bundle savedInstanceState) {
         Log.d(TAG, "enter onCreateView");
         mDrawerListView = (ListView) inflater.inflate(
-                              R.layout.fragment_navigation_drawer, container, false);
+                              R.layout.fragment_drawer, container, false);
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

@@ -7,5 +7,5 @@
     android:divider="@android:color/transparent"
     android:dividerHeight="0dp"
     style="@style/ListViewCustomBlue"
-    tools:context="com.jessicaxu.ReadJiffy.app.ui.NavigationDrawerFragment" />
-<!-- From: file:/E:/code/Android/ReadJiffy/app/src/main/res/layout/fragment_navigation_drawer.xml -->
+    tools:context="com.jessicaxu.ReadJiffy.app.ui.DrawerFragment" />
+<!-- From: file:/E:/code/Android/ReadJiffy/app/src/main/res/layout/fragment_drawer.xml -->
