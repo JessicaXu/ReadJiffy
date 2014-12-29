@@ -863,10 +863,9 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f080015;
         public static final int action_menu_presenter=0x7f080016;
         public static final int action_mode_close_button=0x7f080024;
-        public static final int action_settings=0x7f080068;
         public static final int activity_chooser_view_content=0x7f080025;
-        public static final int add_book=0x7f080069;
-        public static final int adjust_time=0x7f08006d;
+        public static final int add_book=0x7f080068;
+        public static final int adjust_time=0x7f08006c;
         public static final int alertTitle=0x7f080042;
         public static final int always=0x7f08000f;
         public static final int author=0x7f080048;
@@ -891,7 +890,7 @@ containing a value of this type.
         public static final int editReadPage=0x7f080056;
         public static final int edit_query=0x7f080030;
         public static final int end=0x7f08000c;
-        public static final int exit_app=0x7f08006a;
+        public static final int exit_app=0x7f080069;
         public static final int expand_activities_button=0x7f080026;
         public static final int expanded_menu=0x7f08002c;
         public static final int home=0x7f080017;
@@ -938,11 +937,11 @@ containing a value of this type.
         public static final int showHome=0x7f080004;
         public static final int showTitle=0x7f080006;
         public static final int split_action_bar=0x7f08001e;
-        public static final int start=0x7f08006b;
+        public static final int start=0x7f08006a;
         public static final int startButton=0x7f080067;
-        public static final int start_at=0x7f08006c;
-        public static final int stop=0x7f08006e;
-        public static final int stop_at=0x7f08006f;
+        public static final int start_at=0x7f08006b;
+        public static final int stop=0x7f08006d;
+        public static final int stop_at=0x7f08006e;
         public static final int submit_area=0x7f080039;
         public static final int suggestion=0x7f080053;
         public static final int tabMode=0x7f080002;
@@ -1013,8 +1012,8 @@ containing a value of this type.
         public static final int support_simple_spinner_dropdown_item=0x7f030029;
     }
     public static final class menu {
-        public static final int global=0x7f0d0000;
-        public static final int main=0x7f0d0001;
+        public static final int book_info=0x7f0d0000;
+        public static final int global=0x7f0d0001;
         public static final int start_menu=0x7f0d0002;
         public static final int stop_menu=0x7f0d0003;
     }

@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -137,5 +140,39 @@ public  class ContentFragment extends LoaderFragment {
         ((MainActivity) activity).onSectionAttached(
                 getArguments().getInt(MetaData.ARG_POSITION));
         Log.d(TAG, "leave onAttach");
+    }
+
+    @Override
+    public void onActivityCreated (Bundle savedInstanceState) {
+        Log.d(TAG, "enter onActivityCreated");
+        super.onActivityCreated(savedInstanceState);
+        // Indicate that this fragment would like to influence the set of actions in the action bar.
+        setHasOptionsMenu(true);
+        Log.d(TAG, "leave onActivityCreated");
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        Log.d(TAG, "enter onCreateOptionsMenu");
+        // If the drawer is open, show the global app actions in the action bar. See also
+        // showGlobalContextActionBar, which controls the top-left area of the action bar.
+        inflater.inflate(R.menu.book_info, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+        Log.d(TAG, "leave onCreateOptionsMenu");
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d(TAG, "enter onOptionsItemSelected");
+        int id = item.getItemId();
+        switch(id){
+            case R.id.add_book:
+                ((MainActivity)getActivity()).addBook();
+                return true;
+        }
+
+        Log.d(TAG, "leave onOptionsItemSelected");
+        return super.onOptionsItemSelected(item);
+
     }
 }

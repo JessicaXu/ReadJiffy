@@ -8,4 +8,4 @@
     android:dividerHeight="0dp"
     style="@style/ListViewCustomBlue"
     tools:context="com.jessicaxu.ReadJiffy.app.ui.DrawerFragment" />
-<!-- From: file:/E:/code/Android/ReadJiffy/app/src/main/res/layout/fragment_drawer.xml -->
+<!-- From: file:/E:/00.code/00.android/ReadJiffy/app/src/main/res/layout/fragment_drawer.xml -->

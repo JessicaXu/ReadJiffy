@@ -88,7 +88,8 @@ public class DrawerFragment extends Fragment {
         Log.d(TAG, "enter onActivityCreated");
         super.onActivityCreated(savedInstanceState);
         // Indicate that this fragment would like to influence the set of actions in the action bar.
-        setHasOptionsMenu(true);
+        //setHasOptionsMenu(true);
+        setHasOptionsMenu(false);
         Log.d(TAG, "leave onActivityCreated");
     }
 
